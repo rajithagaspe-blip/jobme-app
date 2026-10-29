@@ -1,0 +1,1896 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JobMe </title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Sinhala:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Noto Sans Sinhala', 'Inter', sans-serif;
+      background-color: #f0fdf4;
+      color: #0f172a;
+    }
+    .star-btn {
+      transition: transform 0.15s ease;
+    }
+    .star-btn:hover {
+      transform: scale(1.18);
+    }
+  </style>
+  <link rel="icon" href="data:image/jpeg;base64,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">
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- Top Header -->
+  <header class="bg-gradient-to-r from-emerald-700 via-emerald-600 to-teal-500 text-white shadow-lg sticky top-0 z-20">
+    <div class="max-w-4xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-2.5">
+        <div class="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center font-bold text-xl">
+          <img src="data:image/jpeg;base64,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" alt="JobMe" class="w-9 h-9 object-contain rounded-lg bg-white p-0.5" />
+        </div>
+        <div>
+          <h1 class="text-lg sm:text-xl font-bold leading-tight">
+            <span id="appTitleText">JobMe</span>
+            <span id="stepBadgeHeader" class="text-emerald-200 text-xs font-normal"></span>
+          </h1>
+          <p id="appSubTitleText" class="text-xs text-emerald-100">ඕනෑම වෙලාවක විශ්වාසවන්ත සේවකයින් සහ ව්‍යාපාර හිමියන් සම්බන්ධ කරන වේදිකාව</p>
+        </div>
+      </div>
+
+      <!-- User Mode Switcher (Employer vs Worker ONLY for public) + Language Toggle + Business Owner Badge -->
+      <div class="flex items-center gap-2 flex-wrap">
+        <select id="roleSelect" aria-label="Role Switcher" class="bg-emerald-900 text-white border border-emerald-500/50 rounded-xl px-2.5 py-1.5 text-xs font-semibold focus:outline-none">
+          <option value="owner">🏢 ව්‍යාපාර හිමියා (Employer)</option>
+          <option value="worker">👷 සේවකයා (Worker)</option>
+        </select>
+
+        <button id="langToggleBtn" type="button" class="bg-white text-emerald-800 hover:bg-emerald-50 font-bold text-xs px-3 py-1.5 rounded-xl shadow-xs transition flex items-center gap-1.5">
+          🌐 <span id="langToggleLabel">English</span>
+        </button>
+
+        <div class="bg-emerald-800/80 border border-emerald-500/40 rounded-xl px-3 py-1.5 text-xs flex items-center gap-2">
+          <span id="ownerBadgeLabel">🏢 ඔබේ ව්‍යාපාර Rating:</span>
+          <span id="ownerTopRating" class="font-bold text-amber-300 text-sm">⭐ 4.8</span>
+          <span id="ownerTopReviews" class="text-emerald-200">(12)</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-4xl w-full mx-auto px-4 py-5 flex-1 space-y-5">
+
+    <!-- Admin Mode Active Alert Banner (HIDDEN for regular users) -->
+    <div id="adminActiveBar" class="hidden bg-slate-900 text-white rounded-2xl px-4 py-3 flex flex-wrap items-center justify-between gap-3 border border-amber-400/50 shadow-md">
+      <div class="flex items-center gap-2 text-xs">
+        <span class="bg-amber-400 text-slate-950 font-bold px-2.5 py-0.5 rounded-full">🔐 ADMIN MODE</span>
+        <span id="adminBarText">ඔබ දැන් ඇප් හිමිකරු (Admin) ලෙස ලොග් වී සිටී. ආදායම් සහ NIC තහවුරු කිරීම් පෙනෙන්නේ ඔබට පමණි.</span>
+      </div>
+      <button id="exitAdminBtn" type="button" class="bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold px-3 py-1.5 rounded-xl transition">
+        🚪 Admin ගිණුමෙන් ඉවත් වන්න (Exit Admin)
+      </button>
+    </div>
+
+    <!-- Public Welcome Banner -->
+    <section class="bg-white border border-emerald-200 rounded-2xl p-4 shadow-sm space-y-3">
+      <div id="adminProgressRow" class="hidden items-center justify-between text-xs font-bold text-emerald-900 flex-wrap gap-2">
+        <span id="roadmapLabel">🏆 ඇප් එක ගොඩනැගීමේ පියවර: 4 / 4 (100% සම්පූර්ණයි!)</span>
+        <span class="text-emerald-700">Admin Panel Unlocked ✅</span>
+      </div>
+
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div class="space-y-1">
+          <span id="versionPill" class="inline-block text-xs font-semibold uppercase tracking-wider bg-emerald-100 text-emerald-800 px-2.5 py-0.5 rounded-full">
+            විශ්වාසවන්ත සේවක ජාලය
+          </span>
+          <h2 id="bannerTitle" class="text-base font-bold text-slate-800">ක්ෂණිකව සේවකයින් සොයන්න • හදිසි වැඩ පළ කරන්න • දෙපැත්තටම Rating දෙන්න</h2>
+          <p id="bannerDesc" class="text-xs text-slate-600">
+            NIC තහවුරු කළ සේවකයින් එවෙලේම සම්බන්ධ කරගන්න, නැත්නම් ඔබේ හදිසි රැකියා අවස්ථාව දැන්වීම් පුවරුවට එක් කරන්න.
+          </p>
+        </div>
+        <div class="flex flex-wrap items-center gap-2 shrink-0">
+          <button id="openAddWorkerBtn" type="button" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-semibold px-3.5 py-2.5 rounded-xl shadow-sm transition">
+            + අලුත් සේවකයෙක් එකතු කරන්න
+          </button>
+          <button id="openPostJobBtn" type="button" class="bg-amber-500 hover:bg-amber-600 text-slate-950 text-xs sm:text-sm font-bold px-3.5 py-2.5 rounded-xl shadow-sm transition">
+            📢 හදිසි වැඩක් පළ කරන්න
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation Tabs (Public sees 3 tabs; Admin sees 5 tabs) -->
+    <div class="flex items-center justify-between flex-wrap gap-2 border-b border-slate-200 pb-2">
+      <div class="flex items-center gap-2 flex-wrap">
+        <button id="tabWorkersBtn" type="button" class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-emerald-700 text-white shadow-xs transition">
+          👷 සේවකයින් සොයන්න (<span id="workerCount">0</span>)
+        </button>
+        <button id="tabJobsBtn" type="button" class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-white text-slate-700 border border-slate-200 hover:bg-slate-100 transition">
+          📢 හදිසි රැකියා දැන්වීම් (<span id="jobCount">0</span>)
+        </button>
+        <button id="tabCalcBtn" type="button" class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-white text-slate-700 border border-slate-200 hover:bg-slate-100 transition">
+          🧮 වැටුප් සහ රිසිට්පත්
+        </button>
+        <!-- ADMIN-ONLY TABS: Hidden by default unless Admin PIN is entered -->
+        <button id="tabRevenueBtn" type="button" class="hidden px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-white text-slate-700 border border-amber-300 hover:bg-amber-50 transition">
+          💰 ඔබේ ආදායම (Monetize)
+        </button>
+        <button id="tabVerifyBtn" type="button" class="hidden px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-white text-slate-700 border border-blue-300 hover:bg-blue-50 transition">
+          🛡️ NIC තහවුරු කිරීම & Launch
+        </button>
+      </div>
+      <span id="trustHintText" class="text-xs text-slate-500">💡 සියලු දත්ත ස්වයංක්‍රීයව සුරැකේ (Auto-Saved)</span>
+    </div>
+
+    <!-- TAB 1: WORKERS VIEW -->
+    <div id="workersTabView" class="space-y-4">
+      <!-- Search & Filter Bar -->
+      <section class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 space-y-3">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div>
+            <label id="catFilterLabel" for="categoryFilter" class="block text-xs font-semibold text-slate-600 mb-1">වැඩ වර්ගය තෝරන්න</label>
+            <select id="categoryFilter" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm bg-slate-50 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+              <option value="ALL">සියලුම අංශ (All Categories)</option>
+              <option value="කඩ සහ ගබඩා සහායක">කඩ සහ ගබඩා සහායක (Shop/Store Helper)</option>
+              <option value="ඉදිකිරීම් සහ මේසන්">ඉදිකිරීම් සහ මේසන් (Construction)</option>
+              <option value="වතු සහ කෘෂිකර්ම">වතු සහ කෘෂිකර්ම (Agri/Garden Labor)</option>
+              <option value="විදුලි සහ ජල නළ">විදුලි සහ ජල නළ (Electrician/Plumber)</option>
+              <option value="පැටවුම් සහ බෑම් (Loading)">පැටවුම් සහ බෑම් (Loading/Delivery)</option>
+          <option value="රියදුරු සහ ප්‍රවාහන">රියදුරු සහ ප්‍රවාහන (Driver & Transport)</option>
+          <option value="ආහාර සහ කෑම පිසීම">ආහාර සහ කෑම පිසීම (Cooking & Food)</option>
+          <option value="පිරිසිදු කිරීම සහ ගෘහ සේවා">පිරිසිදු කිරීම සහ ගෘහ සේවා (Cleaning & Home Help)</option>
+          <option value="ආරක්ෂක සේවා (Security)">ආරක්ෂක සේවා (Security) (Security Guard)</option>
+          <option value="වාහන සහ යන්ත්‍ර අලුත්වැඩියා">වාහන සහ යන්ත්‍ර අලුත්වැඩියා (Mechanic & Repairs)</option>
+          <option value="පින්තාරු සහ වඩු වැඩ">පින්තාරු සහ වඩු වැඩ (Painting & Carpentry)</option>
+          <option value="වෙනත් / ඕනෑම වැඩක්">වෙනත් / ඕනෑම වැඩක් (Other / Any Work)</option>
+            </select>
+          </div>
+
+          <div>
+            <label id="searchFilterLabel" for="searchInput" class="block text-xs font-semibold text-slate-600 mb-1">නගරය හෝ නම අනුව සොයන්න</label>
+            <input id="searchInput" type="text" placeholder="උදා: කුරුණෑගල, කමල්..." class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm bg-slate-50 focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+          </div>
+
+          <div class="flex items-end">
+            <label for="availableOnlyToggle" class="w-full flex items-center justify-between bg-emerald-50 border border-emerald-200 rounded-xl px-3.5 py-2 cursor-pointer select-none">
+              <div>
+                <span id="availNowTitle" class="block text-xs font-bold text-emerald-900">දැන්ම වැඩට එන්න පුළුවන්</span>
+                <span id="availNowSub" class="block text-[11px] text-emerald-700">Available Right Now</span>
+              </div>
+              <input id="availableOnlyToggle" type="checkbox" checked class="w-4 h-4 accent-emerald-600 rounded" />
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- Worker Cards Grid -->
+      <section id="workersGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4"></section>
+    </div>
+
+    <!-- Worker Self-Availability Quick Bar (Visible when logged in as Worker) -->
+    <div id="workerSelfStatusBar" class="hidden bg-emerald-900 text-white rounded-2xl p-4 shadow-md flex flex-wrap items-center justify-between gap-3 border border-emerald-500/40">
+      <div class="space-y-0.5">
+        <span id="workerSelfNameText" class="text-sm font-bold text-amber-300 block">👷 ඔබේ සේවක ගිණුම</span>
+        <span id="workerSelfSubText" class="text-xs text-emerald-100 block">ව්‍යාපාර හිමියන්ට ඔබව දැන් පෙනෙන තත්ත්වය:</span>
+      </div>
+      <button id="workerSelfToggleBtn" type="button" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-xs sm:text-sm px-4 py-2.5 rounded-xl shadow-sm transition">
+        🟢 දැන් වැඩට ලබාගත හැක (Available)
+      </button>
+    </div>
+
+    <!-- TAB 2: URGENT JOB BOARD VIEW -->
+    <div id="jobsTabView" class="hidden space-y-4">
+      <div class="bg-amber-50 border border-amber-200 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div>
+          <h3 id="jobsBoardHeading" class="text-sm font-bold text-amber-950">📢 ව්‍යාපාර හිමියන් පළ කළ හදිසි වැඩ අවස්ථා (Urgent Daily Jobs)</h3>
+          <p id="jobsBoardSub" class="text-xs text-amber-800">ව්‍යාපාර හිමියාගේ Rating එක බලා විශ්වාසයෙන් වැඩ භාරගන්න පුළුවන්</p>
+        </div>
+        <button id="openPostJobBtn2" type="button" class="bg-amber-500 hover:bg-amber-600 text-slate-950 text-xs font-bold px-3.5 py-2 rounded-xl shadow-xs transition shrink-0">
+          + අලුත් රැකියා දැන්වීමක් දාන්න
+        </button>
+      </div>
+
+      <section id="jobsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4"></section>
+    </div>
+
+    <!-- TAB 3: WAGE & OVERTIME CALCULATOR + DIGITAL RECEIPT -->
+    <div id="calcTabView" class="hidden space-y-4">
+      <section class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200 grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div class="space-y-3">
+          <h3 id="calcHeading" class="text-base font-bold text-slate-900">🧮 දවසේ වැටුප් සහ අතිකාල (OT) ගණනය</h3>
+          <p id="calcSub" class="text-xs text-slate-500">වැඩ අවසන් වූ පසු සේවකයාට ගෙවිය යුතු මුදල නිවැරදිව ගණනය කර WhatsApp රිසිට්පතක් යවන්න.</p>
+
+          <div>
+            <label for="calcWorkerSelect" class="block text-xs font-semibold text-slate-700 mb-1">සේවකයා තෝරන්න (Select Worker)</label>
+            <select id="calcWorkerSelect" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm bg-slate-50"></select>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label for="calcDaysInput" class="block text-xs font-semibold text-slate-700 mb-1">වැඩ කළ දින ගණන (Days)</label>
+              <input id="calcDaysInput" type="number" min="0.5" step="0.5" value="1" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm" />
+            </div>
+            <div>
+              <label for="calcOtHoursInput" class="block text-xs font-semibold text-slate-700 mb-1">අතිකාල පැය (OT Hours)</label>
+              <input id="calcOtHoursInput" type="number" min="0" step="1" value="2" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm" />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label for="calcOtRateInput" class="block text-xs font-semibold text-slate-700 mb-1">OT පැයකට ගාස්තුව (රු.)</label>
+              <input id="calcOtRateInput" type="number" min="0" step="50" value="450" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm" />
+            </div>
+            <div>
+              <label for="calcAdvanceInput" class="block text-xs font-semibold text-slate-700 mb-1">දුන් අත්තිකාරම් (Advance රු.)</label>
+              <input id="calcAdvanceInput" type="number" min="0" step="100" value="500" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Digital Receipt Card -->
+        <div class="bg-slate-900 text-white rounded-2xl p-4 flex flex-col justify-between space-y-4">
+          <div class="space-y-2">
+            <div class="flex items-center justify-between border-b border-slate-700 pb-2">
+              <span class="text-xs font-bold text-emerald-400">🧾 WADAMITHURU DIGITAL RECEIPT</span>
+              <span id="receiptDateText" class="text-[11px] text-slate-400"></span>
+            </div>
+            <div class="space-y-1.5 text-xs pt-1">
+              <div class="flex justify-between">
+                <span class="text-slate-400">සේවකයා (Worker):</span>
+                <span id="receiptWorkerName" class="font-semibold text-white">-</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-400">මූලික වැටුප (Base Pay):</span>
+                <span id="receiptBasePay" class="font-medium">රු. 0</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-400">අතිකාල දීමනා (OT Pay):</span>
+                <span id="receiptOtPay" class="font-medium text-emerald-300">+ රු. 0</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-400">අත්තිකාරම් අඩු කිරීම් (Advance):</span>
+                <span id="receiptAdvance" class="font-medium text-rose-300">- රු. 0</span>
+              </div>
+              <div class="border-t border-slate-700 pt-2 mt-2 flex justify-between items-baseline">
+                <span class="text-sm font-bold text-amber-300">අතට ගෙවිය යුතු මුදල (Net Pay):</span>
+                <span id="receiptNetTotal" class="text-lg font-bold text-amber-300">රු. 0</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-2">
+            <button id="copyReceiptBtn" type="button" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold py-2.5 px-3 rounded-xl transition">
+              📋 WhatsApp රිසිට්පත Copy කරන්න
+            </button>
+            <button id="rateFromReceiptBtn" type="button" class="bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold py-2.5 px-3 rounded-xl transition">
+              ⭐ දැන් Rating දෙන්න
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- TAB 4 (ADMIN ONLY): APP OWNER MONETIZATION & REVENUE SIMULATOR -->
+    <div id="revenueTabView" class="hidden space-y-4">
+      <section class="bg-white rounded-2xl p-5 shadow-sm border border-emerald-200 space-y-4">
+        <div>
+          <span class="text-[11px] font-bold uppercase tracking-wider bg-amber-100 text-amber-900 px-2.5 py-0.5 rounded-full">
+            🔒 Admin Only — Business Model (ඔබේ ආදායම් සැලැස්ම)
+          </span>
+          <h3 class="text-base font-bold text-slate-900 mt-1">💰 මේ ඇප් එකෙන් ඔබ (App Owner) මුදල් උපයන ප්‍රධාන ක්‍රම 3</h3>
+          <p class="text-xs text-slate-600">මෙම කොටස සාමාන්‍ය පාරිභෝගිකයන්ට හෝ සේවකයින්ට නොපෙනේ. එය පෙනෙන්නේ Admin PIN එකෙන් ඇතුළු වූ ඔබට පමණි:</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+          <div class="bg-emerald-50/70 border border-emerald-200 rounded-xl p-3.5 space-y-1">
+            <span class="font-bold text-emerald-900 block">1. ව්‍යාපාරික VIP පැකේජය (B2B Subscription)</span>
+            <p class="text-lg font-bold text-emerald-700">රු. 2,500 <span class="text-xs font-normal">/ මසකට</span></p>
+            <p class="text-slate-600">හෝටල්, කඩ, ඉදිකිරීම් ආයතනවලට අසීමිතව හදිසි රැකියා දැන්වීම් පළ කිරීමට සහ ක්ෂණිකව සේවකයින් ගෙන්වා ගැනීමට.</p>
+          </div>
+          <div class="bg-amber-50/70 border border-amber-200 rounded-xl p-3.5 space-y-1">
+            <span class="font-bold text-amber-950 block">2. එක් වැඩකින් කොමිස් මුදල (Booking Fee)</span>
+            <p class="text-lg font-bold text-amber-700">රු. 150 <span class="text-xs font-normal">/ එක් දිනකට</span></p>
+            <p class="text-slate-600">ඇප් එක හරහා සේවකයෙකු වෙන් කරගන්නා සෑම අවස්ථාවකම සේවා ගාස්තුව ලෙස ලැබෙන මුදල.</p>
+          </div>
+          <div class="bg-blue-50/70 border border-blue-200 rounded-xl p-3.5 space-y-1">
+            <span class="font-bold text-blue-950 block">3. සේවක Pro Badge (Verified Boost)</span>
+            <p class="text-lg font-bold text-blue-700">රු. 500 <span class="text-xs font-normal">/ මසකට</span></p>
+            <p class="text-slate-600">සේවකයින්ගේ නම ලැයිස්තුවේ ඉහළින්ම පෙන්වීමට සහ වැඩිපුර වැඩ ලබාදීමට.</p>
+          </div>
+        </div>
+
+        <!-- Interactive Profit Calculator -->
+        <div class="bg-slate-50 rounded-2xl p-4 border border-slate-200 space-y-3">
+          <h4 class="text-sm font-bold text-slate-800">📈 ඔබේ මාසික ආදායම ගණනය කර බලන්න (Monthly Profit Simulator)</h4>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+            <div class="space-y-2">
+              <div>
+                <div class="flex justify-between font-semibold mb-1">
+                  <span>VIP ව්‍යාපාර හිමියන් ගණන (රු. 2,500 බැගින්):</span>
+                  <span id="simBusinessesVal" class="text-emerald-700 font-bold">40</span>
+                </div>
+                <input id="simBusinessesInput" type="range" min="5" max="300" step="5" value="40" class="w-full accent-emerald-600" />
+              </div>
+
+              <div>
+                <div class="flex justify-between font-semibold mb-1">
+                  <span>දිනකට සිදුවන සේවක වෙන්කිරීම් (රු. 150 බැගින්):</span>
+                  <span id="simDailyHiresVal" class="text-emerald-700 font-bold">25</span>
+                </div>
+                <input id="simDailyHiresInput" type="range" min="5" max="200" step="5" value="25" class="w-full accent-emerald-600" />
+              </div>
+            </div>
+
+            <div class="bg-emerald-900 text-white rounded-xl p-4 flex flex-col justify-center space-y-1">
+              <span class="text-xs text-emerald-200">ඔබට ලැබිය හැකි ඇස්තමේන්තුගත මාසික ආදායම:</span>
+              <span id="simTotalRevenue" class="text-2xl font-bold text-amber-300">රු. 212,500 / මසකට</span>
+              <p id="simBreakdownText" class="text-[11px] text-emerald-100">VIP ගාස්තු: රු. 100,000 + දෛනික කොමිස් (දින 30): රු. 112,500</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- TAB 5 (ADMIN ONLY): NIC TRUST VERIFICATION & LAUNCH GUIDE -->
+    <div id="verifyTabView" class="hidden space-y-4">
+      <section class="bg-white rounded-2xl p-5 shadow-sm border border-blue-200 space-y-4">
+        <div class="flex items-start justify-between flex-wrap gap-3">
+          <div>
+            <span class="text-[11px] font-bold uppercase tracking-wider bg-blue-100 text-blue-800 px-2.5 py-0.5 rounded-full">
+              🔒 Admin Only — Trust & Safety Center
+            </span>
+            <h3 class="text-base font-bold text-slate-900 mt-1">🛡️ සේවක NIC සහ ග්‍රාම නිලධාරී සහතික අනුමත කිරීම (Admin Verification Panel)</h3>
+            <p class="text-xs text-slate-600">අලුතින් ලියාපදිංචි වන සේවකයින්ගේ හැඳුනුම්පත් පරීක්ෂා කර Verified ලකුණ ලබා දීමට හෝ ඉවත් කිරීමට:</p>
+          </div>
+        </div>
+
+        <div id="verificationList" class="space-y-2.5 text-xs"></div>
+      </section>
+
+      <!-- Step-by-Step Launch Guide -->
+      <section class="bg-slate-900 text-white rounded-2xl p-5 shadow-sm space-y-3">
+        <h3 class="text-base font-bold text-amber-300">🚀 මේ ඇප් එක ඇත්තටම වෙළඳපොළට දාන්නේ කොහොමද? (Full Launch Roadmap)</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+          <div class="bg-slate-800 border border-slate-700 rounded-xl p-3.5 space-y-1">
+            <span class="font-bold text-emerald-400 block">1. නොමිලේ ඉන්ටර්නෙට් එකට දැමීම</span>
+            <p class="text-slate-300">මෙම HTML ගොනුව Netlify Drop හෝ Vercel හරහා විනාඩි 2කින් නොමිලේම Live Website ලින්ක් එකක් ලෙස Publish කළ හැක.</p>
+          </div>
+          <div class="bg-slate-800 border border-slate-700 rounded-xl p-3.5 space-y-1">
+            <span class="font-bold text-amber-300 block">2. ෆෝන් එකට App එකක් ලෙස දාගැනීම</span>
+            <p class="text-slate-300">ඕනෑම Android හෝ iPhone එකකින් ලින්ක් එක ඕපන් කර "Add to Home Screen" එබූ විට සාමාන්‍ය App එකක් ලෙසම ක්‍රියා කරයි.</p>
+          </div>
+          <div class="bg-slate-800 border border-slate-700 rounded-xl p-3.5 space-y-1">
+            <span class="font-bold text-blue-300 block">3. පළමු ගනුදෙනුකරුවන් 50 දෙනා</span>
+            <p class="text-slate-300">ඔබේ ප්‍රදේශයේ හාඩ්වෙයාර්, කඩ, සහ මේසන්/කම්කරු ශිල්පීන් 50 දෙනෙකු නොමිලේ ලියාපදිංචි කර පළමු මාසයෙන් පසු VIP පැකේජ හඳුන්වා දෙන්න.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Completed Jobs & Two-Way Rating Log -->
+    <section class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 space-y-3">
+      <div class="flex items-center justify-between flex-wrap gap-2">
+        <div>
+          <h3 id="historyHeading" class="text-sm font-bold text-slate-800">🔄 මෑතකදී ලබා දුන් දෙපැත්තේම Ratings (Two-Way Rating History)</h3>
+          <p id="historySub" class="text-xs text-slate-500">ව්‍යාපාර හිමියා සේවකයාට දුන් තරු සහ සේවකයා ව්‍යාපාර හිමියාට දුන් තරු මෙහි සටහන් වේ</p>
+        </div>
+      </div>
+      <div id="ratingHistoryList" class="space-y-2.5 text-xs"></div>
+    </section>
+
+  </main>
+
+  <!-- Discreet Footer with Secret Admin Login Trigger -->
+  <footer class="max-w-4xl w-full mx-auto px-4 py-4 border-t border-slate-200 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-500">
+    <span>© 2026 JobMe • Trusted Sri Lankan Workforce Platform</span>
+    <div class="flex items-center gap-3">
+      <button id="downloadHtmlBtn" type="button" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-3 py-1.5 rounded-xl shadow-xs transition">
+        📥 HTML ගොනුව බාගන්න (Download index.html)
+      </button>
+      <button id="openAdminModalBtn" type="button" style="display:none" class="text-slate-500 hover:text-slate-900 font-semibold underline">
+        🔐 Admin පිවිසුම (App Owner Login)
+      </button>
+    </div>
+  </footer>
+
+  <!-- Modal 1: Two-Way Rating & Hire Simulation -->
+  <div id="ratingModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-30 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full p-5 shadow-xl space-y-4 border border-slate-200">
+      <div class="flex items-start justify-between gap-2">
+        <div>
+          <span id="modalBadgeText" class="text-[11px] font-bold uppercase tracking-wider bg-amber-100 text-amber-800 px-2.5 py-0.5 rounded-full">
+            Two-Way Rating පද්ධතිය
+          </span>
+          <h3 id="modalWorkerName" class="text-base font-bold text-slate-900 mt-1">සේවකයා</h3>
+          <p id="modalWorkerMeta" class="text-xs text-slate-500"></p>
+        </div>
+        <button id="closeRatingModalBtn" type="button" class="text-slate-400 hover:text-slate-600 text-lg font-bold px-2">✕</button>
+      </div>
+
+      <!-- Part A: Business Owner rates Worker -->
+      <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 space-y-2">
+        <p id="rateWorkerTitle" class="text-xs font-bold text-slate-800">1. ව්‍යාපාර හිමියා ලෙස ඔබ සේවකයාට දෙන Rating එක:</p>
+        <p id="rateWorkerSub" class="text-[11px] text-slate-500">වෙලාවට පැමිණීම සහ වැඩේ පිළිවෙළ ගැන තරු ලබා දෙන්න</p>
+        <div id="workerStarContainer" class="flex items-center gap-1.5 text-2xl"></div>
+        <input id="ownerCommentInput" type="text" placeholder="උදා: වෙලාවට ඇවිත් ඉතා හොඳින් වැඩේ කළා..." class="w-full rounded-lg border border-slate-300 px-2.5 py-1.5 text-xs bg-white" />
+      </div>
+
+      <!-- Part B: Worker rates Business Owner -->
+      <div class="bg-emerald-50/70 p-3.5 rounded-xl border border-emerald-200 space-y-2">
+        <p id="rateOwnerTitle" class="text-xs font-bold text-emerald-950">2. සේවකයා විසින් ව්‍යාපාර හිමියාට (ඔබට) දෙන Rating එක:</p>
+        <p id="rateOwnerSub" class="text-[11px] text-emerald-800">පොරොන්දු වූ වැටුප් වෙලාවට ගෙවීම සහ සුහදශීලී බව</p>
+        <div id="ownerStarContainer" class="flex items-center gap-1.5 text-2xl"></div>
+        <input id="workerCommentInput" type="text" placeholder="උදා: කතා කරගත් මුදල එවෙලේම ගෙව්වා, හොඳ මහත්මයෙක්..." class="w-full rounded-lg border border-emerald-300 px-2.5 py-1.5 text-xs bg-white" />
+      </div>
+
+      <div class="flex items-center justify-end gap-2 pt-1">
+        <button id="cancelRatingBtn" type="button" class="px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100">
+          අවලංගු කරන්න
+        </button>
+        <button id="submitRatingBtn" type="button" class="px-4 py-2 rounded-xl text-xs font-semibold bg-emerald-600 hover:bg-emerald-700 text-white shadow-sm">
+          Rating දෙකම සුරකින්න (Save Ratings)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2: Add New Worker -->
+  <div id="addWorkerModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-30 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full p-5 shadow-xl space-y-4 border border-slate-200">
+      <div class="flex items-center justify-between">
+        <h3 id="addWorkerModalTitle" class="text-base font-bold text-slate-900">+ අලුත් සේවකයෙක් ලියාපදිංචි කරන්න</h3>
+        <button id="closeAddModalBtn" type="button" class="text-slate-400 hover:text-slate-600 text-lg font-bold px-2">✕</button>
+      </div>
+
+      <form id="addWorkerForm" class="space-y-3 text-xs">
+        <div>
+          <label id="lblWorkerName" for="newWorkerName" class="block font-semibold text-slate-700 mb-1">සේවකයාගේ නම (Worker Name)</label>
+          <input id="newWorkerName" type="text" required placeholder="උදා: නිමල් පෙරේරා / Nimal Perera" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm" />
+        </div>
+        <div>
+          <label id="lblWorkerCat" for="newWorkerCategory" class="block font-semibold text-slate-700 mb-1">වැඩ අංශය (Category)</label>
+          <select id="newWorkerCategory" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm bg-white">
+            <option value="කඩ සහ ගබඩා සහායක">කඩ සහ ගබඩා සහායක (Shop/Store Helper)</option>
+            <option value="ඉදිකිරීම් සහ මේසන්">ඉදිකිරීම් සහ මේසන් (Construction)</option>
+            <option value="වතු සහ කෘෂිකර්ම">වතු සහ කෘෂිකර්ම (Agri/Garden Labor)</option>
+            <option value="විදුලි සහ ජල නළ">විදුලි සහ ජල නළ (Electrician/Plumber)</option>
+            <option value="පැටවුම් සහ බෑම් (Loading)">පැටවුම් සහ බෑම් (Loading/Delivery)</option>
+          <option value="රියදුරු සහ ප්‍රවාහන">රියදුරු සහ ප්‍රවාහන (Driver & Transport)</option>
+          <option value="ආහාර සහ කෑම පිසීම">ආහාර සහ කෑම පිසීම (Cooking & Food)</option>
+          <option value="පිරිසිදු කිරීම සහ ගෘහ සේවා">පිරිසිදු කිරීම සහ ගෘහ සේවා (Cleaning & Home Help)</option>
+          <option value="ආරක්ෂක සේවා (Security)">ආරක්ෂක සේවා (Security) (Security Guard)</option>
+          <option value="වාහන සහ යන්ත්‍ර අලුත්වැඩියා">වාහන සහ යන්ත්‍ර අලුත්වැඩියා (Mechanic & Repairs)</option>
+          <option value="පින්තාරු සහ වඩු වැඩ">පින්තාරු සහ වඩු වැඩ (Painting & Carpentry)</option>
+          <option value="වෙනත් / ඕනෑම වැඩක්">වෙනත් / ඕනෑම වැඩක් (Other / Any Work)</option>
+          </select>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label id="lblWorkerLoc" for="newWorkerLocation" class="block font-semibold text-slate-700 mb-1">නගරය (City)</label>
+            <input id="newWorkerLocation" type="text" required placeholder="කුරුණෑගල / Kurunegala" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm" />
+          </div>
+          <div>
+            <label id="lblWorkerWage" for="newWorkerWage" class="block font-semibold text-slate-700 mb-1">දිනක ගාස්තුව (රු. / LKR)</label>
+            <input id="newWorkerWage" type="number" required min="1000" step="100" value="3500" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm" />
+          </div>
+        </div>
+        <div>
+          <label id="lblWorkerPhone" for="newWorkerPhone" class="block font-semibold text-slate-700 mb-1">දුරකථන / WhatsApp අංකය</label>
+          <input id="newWorkerPhone" type="tel" required placeholder="0712345678" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm" />
+        </div>
+        <div>
+          <label for="newWorkerNic" class="block font-semibold text-slate-700 mb-1">🪪 ජාතික හැඳුනුම්පත් අංකය (NIC)</label>
+          <input id="newWorkerNic" type="text" required placeholder="199012345678 හෝ 901234567V" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm" />
+          <p class="text-[11px] text-slate-500 mt-1">🔒 ඔබේ NIC අංකය වෙන කිසිවෙකුට නොපෙනේ. තහවුරු කළ පසු 🛡️ ලකුණ ලැබේ.</p>
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+          <label class="block text-xs font-semibold text-slate-700">📷 NIC ඉදිරිපස<input id="newWorkerNicFront" type="file" accept="image/*" class="mt-1 block w-full text-[11px]" /></label>
+          <label class="block text-xs font-semibold text-slate-700">📷 NIC පිටුපස<input id="newWorkerNicBack" type="file" accept="image/*" class="mt-1 block w-full text-[11px]" /></label>
+        </div>
+
+        <div class="flex items-center justify-end gap-2 pt-2">
+          <button id="cancelAddWorkerBtn" type="button" class="px-3.5 py-2 rounded-xl font-semibold text-slate-600 hover:bg-slate-100">
+            අවලංගු කරන්න
+          </button>
+          <button id="submitAddWorkerBtn" type="submit" class="px-4 py-2 rounded-xl font-semibold bg-emerald-600 hover:bg-emerald-700 text-white shadow-sm">
+            ලැයිස්තුවට එකතු කරන්න
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal 3: Post Urgent Job -->
+  <div id="postJobModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-30 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full p-5 shadow-xl space-y-4 border border-slate-200">
+      <div class="flex items-center justify-between">
+        <h3 id="postJobModalTitle" class="text-base font-bold text-slate-900">📢 හදිසි රැකියා අවස්ථාවක් පළ කරන්න</h3>
+        <button id="closeJobModalBtn" type="button" class="text-slate-400 hover:text-slate-600 text-lg font-bold px-2">✕</button>
+      </div>
+
+      <form id="postJobForm" class="space-y-3 text-xs">
+        <div>
+          <label for="jobTitleInput" class="block font-semibold text-slate-700 mb-1">වැඩේ විස්තරය (Job Title)</label>
+          <input id="jobTitleInput" type="text" required placeholder="උදා: අද දවසට ගබඩා සහායකයින් 2ක් අවශ්‍යයි" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm" />
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label for="jobBusinessInput" class="block font-semibold text-slate-700 mb-1">ව්‍යාපාරයේ නම (Business)</label>
+            <input id="jobBusinessInput" type="text" required placeholder="උදා: ලක්ෂ්මී හාඩ්වෙයාර්" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm" />
+          </div>
+          <div>
+            <label for="jobLocationInput" class="block font-semibold text-slate-700 mb-1">ස්ථානය (Location)</label>
+            <input id="jobLocationInput" type="text" required placeholder="උදා: කුරුණෑගල" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm" />
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label for="jobPayInput" class="block font-semibold text-slate-700 mb-1">දිනක ගෙවීම (රු. / Daily Pay)</label>
+            <input id="jobPayInput" type="number" required min="1000" step="100" value="3500" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm" />
+          </div>
+          <div>
+            <label for="jobPhoneInput" class="block font-semibold text-slate-700 mb-1">දුරකථන අංකය (Phone)</label>
+            <input id="jobPhoneInput" type="text" required value="0719876543" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm" />
+          </div>
+        </div>
+
+        <div class="flex items-center justify-end gap-2 pt-2">
+          <button id="cancelJobModalBtn" type="button" class="px-3.5 py-2 rounded-xl font-semibold text-slate-600 hover:bg-slate-100">
+            අවලංගු කරන්න
+          </button>
+          <button type="submit" class="px-4 py-2 rounded-xl font-bold bg-amber-500 hover:bg-amber-600 text-slate-950 shadow-sm">
+            දැන්වීම පළ කරන්න (Post Job)
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal 4: Secret Admin PIN Login Modal -->
+  <div id="adminPinModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-30 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-sm w-full p-5 shadow-xl space-y-4 border border-slate-200">
+      <div class="flex items-center justify-between">
+        <h3 class="text-base font-bold text-slate-900">🔐 ඇප් හිමිකරුගේ (Admin) පිවිසුම</h3>
+        <button id="closeAdminModalBtn" type="button" class="text-slate-400 hover:text-slate-600 text-lg font-bold px-2">✕</button>
+      </div>
+      <p class="text-xs text-slate-600">
+        මෙම කොටස විවෘත වන්නේ <strong>Admin අවසර ඇති ගිණුමකින්</strong> ඇතුල් වී සිටී නම් පමණි. අවසරය පරීක්ෂා කරන්නේ server එකෙනි.
+      </p>
+      <div class="flex items-center justify-end gap-2">
+        <button id="cancelAdminPinBtn" type="button" class="px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100">
+          අවලංගු කරන්න
+        </button>
+        <button id="unlockAdminBtn" type="button" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 hover:bg-slate-800 text-amber-300 shadow-sm">
+          🔓 Admin Panel විවෘත කරන්න
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toastBox" class="fixed bottom-4 right-4 bg-slate-900 text-white text-xs font-medium px-4 py-3 rounded-xl shadow-lg hidden z-40"></div>
+
+  <script>
+    // 1. Bilingual Dictionary
+    const i18n = {
+      si: {
+        appTitle: "JobMe",
+        stepBadge: "",
+        appSubTitle: "ඕනෑම වෙලාවක විශ්වාසවන්ත සේවකයින් සහ ව්‍යාපාර හිමියන් සම්බන්ධ කරන වේදිකාව",
+        toggleBtn: "English",
+        ownerBadge: "🏢 ඔබේ ව්‍යාපාර Rating:",
+        versionPill: "විශ්වාසවන්ත සේවක ජාලය",
+        bannerTitle: "ක්ෂණිකව සේවකයින් සොයන්න • හදිසි වැඩ පළ කරන්න • දෙපැත්තටම Rating දෙන්න",
+        bannerDesc: "NIC තහවුරු කළ සේවකයින් එවෙලේම සම්බන්ධ කරගන්න, නැත්නම් ඔබේ හදිසි රැකියා අවස්ථාව දැන්වීම් පුවරුවට එක් කරන්න.",
+        addWorkerBtn: "+ අලුත් සේවකයෙක් එකතු කරන්න",
+        postJobBtn: "📢 හදිසි වැඩක් පළ කරන්න",
+        tabWorkers: "👷 සේවකයින් සොයන්න",
+        tabJobs: "📢 හදිසි රැකියා දැන්වීම්",
+        tabCalc: "🧮 වැටුප් සහ රිසිට්පත්",
+        tabRevenue: "💰 ඔබේ ආදායම (Monetize)",
+        tabVerify: "🛡️ NIC තහවුරු කිරීම & Launch",
+        trustHint: "💡 සියලු දත්ත ස්වයංක්‍රීයව සුරැකේ (Auto-Saved)",
+        catFilterLabel: "වැඩ වර්ගය තෝරන්න",
+        searchFilterLabel: "නගරය හෝ නම අනුව සොයන්න",
+        searchPlaceholder: "උදා: කුරුණෑගල, සුනිල්...",
+        availNowTitle: "දැන්ම වැඩට එන්න පුළුවන්",
+        availNowSub: "Available Right Now",
+        dailyRateLabel: "දිනක ගාස්තුව",
+        availBadgeOn: "🟢 දැන් ලබාගත හැක",
+        availBadgeOff: "⚪ කාර්යබහුලයි",
+        hireAndRateBtn: "වැඩට ගන්න & Rating",
+        jobsBoardHeading: "📢 ව්‍යාපාර හිමියන් පළ කළ හදිසි වැඩ අවස්ථා (Urgent Daily Jobs)",
+        jobsBoardSub: "ව්‍යාපාර හිමියාගේ Rating එක බලා විශ්වාසයෙන් වැඩ භාරගන්න පුළුවන්",
+        historyHeading: "🔄 මෑතකදී ලබා දුන් දෙපැත්තේම Ratings (Two-Way Rating History)",
+        historySub: "ව්‍යාපාර හිමියා සේවකයාට දුන් තරු සහ සේවකයා ව්‍යාපාර හිමියාට දුන් තරු මෙහි සටහන් වේ",
+        ownerToWorker: "🏢 ව්‍යාපාර හිමියා ➔",
+        workerToOwner: "➔ ව්‍යාපාර හිමියාට:",
+        acceptJobBtn: "✋ වැඩේ භාරගන්න (Apply)",
+        jobAcceptedBtn: "✅ භාරගත්තා (Applied)"
+      },
+      en: {
+        appTitle: "JobMe (WorkMate)",
+        stepBadge: "",
+        appSubTitle: "On-Demand Manpower & Two-Way Trust Rating Platform",
+        toggleBtn: "සිංහල",
+        ownerBadge: "🏢 Your Business Rating:",
+        versionPill: "Verified Workforce Network",
+        bannerTitle: "Find Workers Instantly • Post Urgent Shifts • Two-Way Trust Ratings",
+        bannerDesc: "Hire NIC-verified daily workers right away or post urgent shift openings on the live job board.",
+        addWorkerBtn: "+ Add New Worker",
+        postJobBtn: "📢 Post Urgent Job",
+        tabWorkers: "👷 Find Workers",
+        tabJobs: "📢 Urgent Job Board",
+        tabCalc: "🧮 Wage & Receipt",
+        tabRevenue: "💰 App Revenue (Admin Only)",
+        tabVerify: "🛡️ NIC Verify & Launch (Admin)",
+        trustHint: "💡 All changes are auto-saved in your browser",
+        catFilterLabel: "Select Job Category",
+        searchFilterLabel: "Search by City or Name",
+        searchPlaceholder: "e.g. Kurunegala, Sunil...",
+        availNowTitle: "Available Right Now",
+        availNowSub: "Ready for immediate shift",
+        dailyRateLabel: "Daily Wage",
+        availBadgeOn: "🟢 Available Now",
+        availBadgeOff: "⚪ Busy",
+        hireAndRateBtn: "Hire & Rate",
+        jobsBoardHeading: "📢 Urgent Daily Jobs Posted by Business Owners",
+        jobsBoardSub: "Check the employer's rating and accept daily jobs with confidence",
+        historyHeading: "🔄 Recent Two-Way Rating History",
+        historySub: "Both the employer's rating of the worker and the worker's rating of the employer are logged here",
+        ownerToWorker: "🏢 Business Owner ➔",
+        workerToOwner: "➔ to Business Owner:",
+        acceptJobBtn: "✋ Accept Job (Apply)",
+        jobAcceptedBtn: "✅ Job Accepted"
+      }
+    };
+
+    const categoryLabelsEn = {
+      "කඩ සහ ගබඩා සහායක": "Shop & Store Helper",
+      "ඉදිකිරීම් සහ මේසන්": "Construction & Masonry",
+      "වතු සහ කෘෂිකර්ම": "Agri & Garden Labor",
+      "විදුලි සහ ජල නළ": "Electrician & Plumber",
+      "පැටවුම් සහ බෑම් (Loading)": "Loading & Delivery",
+      "රියදුරු සහ ප්‍රවාහන": "Driver & Transport",
+      "ආහාර සහ කෑම පිසීම": "Cooking & Food",
+      "පිරිසිදු කිරීම සහ ගෘහ සේවා": "Cleaning & Home Help",
+      "ආරක්ෂක සේවා (Security)": "Security Guard",
+      "වාහන සහ යන්ත්‍ර අලුත්වැඩියා": "Mechanic & Repairs",
+      "පින්තාරු සහ වඩු වැඩ": "Painting & Carpentry",
+      "වෙනත් / ඕනෑම වැඩක්": "Other / Any Work"
+    };
+
+    const bannerWorker = {
+      si: { t: "ඔබට ගැළපෙන හදිසි රැකියා සොයන්න • ව්‍යාපාර හිමියාගේ Rating බලන්න • වැඩේ භාරගන්න", d: "ව්‍යාපාර හිමියන්ගේ Rating බලා, ඔබට ගැළපෙන දෛනික රැකියා විශ්වාසයෙන් භාරගන්න." },
+      en: { t: "Find Urgent Jobs • Check the Employer's Rating • Accept the Shift", d: "Check each employer's rating and accept the daily jobs that suit you." }
+    };
+    let currentLang = "si";
+    let activeTab = "workers";
+    let currentRole = "owner";
+    let isAdminUnlocked = false; // Hidden from public by default!
+
+    let businessOwner = {
+      name: "",
+      rating: 0,
+      reviewsCount: 0
+    };
+
+    let workers = [];
+
+    let urgentJobs = [];
+    let ratingHistory = [];
+
+    function loadSavedState() {
+      try { localStorage.removeItem("wadamithuru_v2_state"); localStorage.removeItem("wadamithuru_session"); } catch (err) {}
+      try { const l = localStorage.getItem("wadamithuru_lang"); if (l === "si" || l === "en") { currentLang = l; window.__hasLang = true; } } catch (err) {}
+    }
+
+    function saveState() {
+      try { localStorage.setItem("wadamithuru_lang", currentLang); } catch (err) {}
+    }
+
+    function esc(v){return String(v==null?"":v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+    function toIntl(p){const d=String(p).replace(/\D/g,"");return d.startsWith("0")?"94"+d.slice(1):d;}
+    function validPhone(p){return /^0\d{9}$/.test(String(p).replace(/[\s-]/g,""));}
+    let activeWorkerId = null;
+    let selectedWorkerStars = 5;
+    let selectedOwnerStars = 5;
+
+    function showToast(msg) {
+      const toast = document.getElementById("toastBox");
+      toast.textContent = msg;
+      toast.classList.remove("hidden");
+      setTimeout(() => {
+        toast.classList.add("hidden");
+      }, 3200);
+    }
+
+    function applyLanguage() {
+      const t = i18n[currentLang];
+      document.getElementById("appTitleText").textContent = t.appTitle;
+      document.getElementById("stepBadgeHeader").textContent = t.stepBadge;
+      document.getElementById("appSubTitleText").textContent = t.appSubTitle;
+      document.getElementById("langToggleLabel").textContent = t.toggleBtn;
+      document.getElementById("ownerBadgeLabel").textContent = t.ownerBadge;
+      document.getElementById("versionPill").textContent = t.versionPill;
+      document.getElementById("bannerTitle").textContent = currentRole === "worker" ? bannerWorker[currentLang].t : t.bannerTitle;
+      document.getElementById("bannerDesc").textContent = currentRole === "worker" ? bannerWorker[currentLang].d : t.bannerDesc;
+      document.getElementById("openAddWorkerBtn").textContent = t.addWorkerBtn;
+      document.getElementById("openPostJobBtn").textContent = t.postJobBtn;
+      document.getElementById("trustHintText").textContent = t.trustHint;
+      document.getElementById("catFilterLabel").textContent = t.catFilterLabel;
+      document.getElementById("searchFilterLabel").textContent = t.searchFilterLabel;
+      document.getElementById("searchInput").placeholder = t.searchPlaceholder;
+      document.getElementById("availNowTitle").textContent = t.availNowTitle;
+      document.getElementById("availNowSub").textContent = t.availNowSub;
+      document.getElementById("jobsBoardHeading").textContent = t.jobsBoardHeading;
+      document.getElementById("jobsBoardSub").textContent = t.jobsBoardSub;
+      document.getElementById("historyHeading").textContent = t.historyHeading;
+      document.getElementById("historySub").textContent = t.historySub;
+
+      renderOwnerHeader();
+      renderWorkers();
+      renderJobs();
+      populateCalcWorkers();
+      updateWageReceipt();
+      updateRevenueSimulator();
+      renderVerificationList();
+      renderHistory();
+      updateTabStyles();
+      if (window.applyWelcomeLang) window.applyWelcomeLang();
+    }
+
+    function updateTabStyles() {
+      const t = i18n[currentLang];
+      if (currentRole === "worker" && activeTab === "calc") activeTab = "jobs";
+      const wBtn = document.getElementById("tabWorkersBtn");
+      const jBtn = document.getElementById("tabJobsBtn");
+      const cBtn = document.getElementById("tabCalcBtn");
+      const rBtn = document.getElementById("tabRevenueBtn");
+      const vBtn = document.getElementById("tabVerifyBtn");
+      const adminBar = document.getElementById("adminActiveBar");
+      const wCount = document.getElementById("workerCount") ? document.getElementById("workerCount").textContent : workers.length;
+
+      wBtn.innerHTML = `${t.tabWorkers} (<span id="workerCount">${wCount}</span>)`;
+      jBtn.innerHTML = `${t.tabJobs} (<span id="jobCount">${urgentJobs.length}</span>)`;
+      cBtn.textContent = t.tabCalc;
+      rBtn.textContent = t.tabRevenue;
+      vBtn.textContent = t.tabVerify;
+
+      const inactiveClass = "px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-white text-slate-700 border border-slate-200 hover:bg-slate-100 transition";
+      wBtn.className = activeTab === "workers" ? "px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-emerald-700 text-white shadow-xs transition" : inactiveClass;
+      jBtn.className = activeTab === "jobs" ? "px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-amber-500 text-slate-950 shadow-xs transition" : inactiveClass;
+      cBtn.className = activeTab === "calc" ? "px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-emerald-700 text-white shadow-xs transition" : inactiveClass;
+
+      if (currentRole === "worker") { cBtn.className = "hidden"; }
+
+      // Strictly hide Monetize & NIC Admin tabs unless Admin is unlocked
+      if (isAdminUnlocked) {
+        adminBar.classList.remove("hidden");
+        rBtn.className = activeTab === "revenue"
+          ? "px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-amber-500 text-slate-950 shadow-xs transition"
+          : "px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-amber-50 text-amber-900 border border-amber-300 hover:bg-amber-100 transition";
+        vBtn.className = activeTab === "verify"
+          ? "px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-blue-700 text-white shadow-xs transition"
+          : "px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-blue-50 text-blue-900 border border-blue-300 hover:bg-blue-100 transition";
+      } else {
+        adminBar.classList.add("hidden");
+        rBtn.className = "hidden";
+        vBtn.className = "hidden";
+        if (activeTab === "revenue" || activeTab === "verify") {
+          activeTab = "workers";
+        }
+      }
+
+      document.getElementById("workersTabView").classList.toggle("hidden", activeTab !== "workers");
+      document.getElementById("jobsTabView").classList.toggle("hidden", activeTab !== "jobs");
+      document.getElementById("calcTabView").classList.toggle("hidden", activeTab !== "calc");
+      document.getElementById("revenueTabView").classList.toggle("hidden", !isAdminUnlocked || activeTab !== "revenue");
+      document.getElementById("verifyTabView").classList.toggle("hidden", !isAdminUnlocked || activeTab !== "verify");
+    }
+
+    function renderOwnerHeader() {
+      document.getElementById("ownerTopRating").textContent = "⭐ " + businessOwner.rating.toFixed(1) + (businessOwner.verified ? " 🛡️" : "");
+      document.getElementById("ownerTopReviews").textContent = "(" + businessOwner.reviewsCount + ")";
+    }
+
+    function renderWorkers() {
+      const t = i18n[currentLang];
+      const category = document.getElementById("categoryFilter").value;
+      const query = document.getElementById("searchInput").value.trim().toLowerCase();
+      const onlyAvailable = document.getElementById("availableOnlyToggle").checked;
+
+      const filtered = workers.filter(w => {
+        const matchCategory = category === "ALL" || w.category === category;
+        const matchSearch = !query || w.name.toLowerCase().includes(query) || w.location.toLowerCase().includes(query) || w.category.toLowerCase().includes(query);
+        const matchAvailable = !onlyAvailable || w.availableNow;
+        return matchCategory && matchSearch && matchAvailable;
+      });
+
+      filtered.sort((a, b) => (b.verified - a.verified) || (b.rating - a.rating));
+
+      const countEl = document.getElementById("workerCount");
+      if (countEl) countEl.textContent = filtered.length;
+
+      const grid = document.getElementById("workersGrid");
+      grid.innerHTML = "";
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full bg-white rounded-2xl p-8 text-center border border-dashed border-slate-300">
+            <p class="text-sm font-semibold text-slate-700">${currentLang === 'si' ? 'මෙම තේරීමට ගැළපෙන සේවකයින් හමු නොවීය.' : 'No matching workers found.'}</p>
+            <p class="text-xs text-slate-500 mt-1">${currentLang === 'si' ? '"දැන්ම වැඩට එන්න පුළුවන්" ටික් එක ඉවත් කර හෝ වෙනත් අංශයක් තෝරා බලන්න.' : 'Try unchecking "Available Right Now" or selecting another category.'}</p>
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach(w => {
+        const displayCat = currentLang === "en" ? (categoryLabelsEn[w.category] || w.category) : w.category;
+        const cleanPhone = (w.phone || "").replace(/[^0-9]/g, "");
+        const card = document.createElement("div");
+        card.className = "bg-white rounded-2xl p-4 flex flex-col justify-between gap-3 transition " + (w.verified ? "border-2 border-emerald-400 shadow-md" : "border border-slate-200 shadow-sm hover:border-emerald-300");
+        card.innerHTML = `
+          <div class="space-y-2">
+            <div class="flex items-start justify-between gap-2">
+              <div>
+                <div class="flex items-center gap-1.5 flex-wrap">
+                  <h4 class="font-bold text-slate-900 text-base">${esc(w.name)}</h4>
+                  ${w.verified
+                    ? '<span class="text-[11px] bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-2.5 py-0.5 rounded-full font-bold shadow-sm">🛡️ NIC තහවුරු කළ</span>'
+                    : '<span class="text-[11px] bg-amber-50 text-amber-700 px-2 py-0.5 rounded-full font-semibold">⏳ NIC පරීක්ෂා කරමින්</span>'}
+                </div>
+                <p class="text-xs text-slate-500 mt-0.5">${esc(displayCat)} • 📍 ${esc(w.location)}</p>
+              </div>
+              <div class="text-right shrink-0">
+                <span class="inline-flex items-center gap-1 bg-amber-50 border border-amber-200 text-amber-800 font-bold text-xs px-2.5 py-1 rounded-xl">
+                  ${w.reviews > 0 ? '⭐ ' + w.rating.toFixed(1) + ' <span class="font-normal text-amber-700">(' + w.reviews + ')</span>' : '🆕 ' + (currentLang==='si'?'අලුත්':'New')}
+                </span>
+              </div>
+            </div>
+
+            <div class="bg-slate-50 rounded-xl px-3 py-2 text-xs text-slate-600 border border-slate-100">
+              💬 <em>"${esc(w.lastReview)}"</em>
+            </div>
+
+            <div class="flex items-center justify-between bg-emerald-50/60 rounded-xl px-3 py-1.5 border border-emerald-100 text-xs">
+              ${w.unlocked
+                ? `<span class="font-medium text-slate-700">📱 ${esc(w.phone)}</span>
+                   <div class="flex items-center gap-2">
+                     <button type="button" data-wa-phone="${cleanPhone}" data-wa-name="${esc(w.name)}" class="text-emerald-700 hover:underline font-bold">💬 WhatsApp</button>
+                     <span class="text-slate-300">|</span>
+                     <button type="button" data-call-phone="${cleanPhone}" data-call-name="${esc(w.name)}" class="text-blue-700 hover:underline font-bold">📞 Call</button>
+                   </div>`
+                : `<span class="font-semibold text-slate-600">📱 ${esc(cleanPhone.slice(0, 3) + " ••• ••" + cleanPhone.slice(-2))}</span>
+                   <button type="button" data-unlock-id="${w.id}" class="bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-2.5 py-1 rounded-lg shadow-2xs transition">
+                     🔒 අංකය ලබාගන්න (Unlock)
+                   </button>`}
+            </div>
+          </div>
+
+          <div class="pt-2 border-t border-slate-100 flex items-center justify-between gap-2 flex-wrap">
+            <div>
+              <span class="block text-[11px] text-slate-500">${t.dailyRateLabel}</span>
+              <span class="text-sm font-bold text-slate-900">රු. ${w.dailyWage.toLocaleString()}</span>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <button type="button" data-toggle-id="${w.id}" class="text-xs px-2.5 py-1.5 rounded-lg border ${w.availableNow ? 'bg-emerald-50 border-emerald-200 text-emerald-800 font-semibold' : 'bg-slate-100 border-slate-200 text-slate-600'}">
+                ${w.availableNow ? t.availBadgeOn : t.availBadgeOff}
+              </button>
+              <button type="button" data-rate-id="${w.id}" class="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white text-xs font-bold px-3.5 py-2 rounded-xl shadow-md transition">
+                ${t.hireAndRateBtn}
+              </button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+
+      grid.querySelectorAll("[data-unlock-id]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const id = Number(btn.getAttribute("data-unlock-id"));
+          const worker = workers.find(item => item.id === id);
+          if (worker) {
+            worker.unlocked = true;
+            renderWorkers();
+            showToast(currentLang === "si" ? `🔓 ${worker.name} ගේ දුරකථන අංකය විවෘත විය!` : `🔓 Unlocked contact for ${worker.name}!`);
+          }
+        });
+      });
+
+      grid.querySelectorAll("[data-rate-id]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          openRatingModal(Number(btn.getAttribute("data-rate-id")));
+        });
+      });
+
+      grid.querySelectorAll("[data-toggle-id]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const id = Number(btn.getAttribute("data-toggle-id"));
+          const worker = workers.find(item => item.id === id);
+          if (worker) {
+            worker.availableNow = !worker.availableNow;
+            saveState();
+            renderWorkers();
+            showToast(currentLang === "si" ? `${worker.name} ගේ තත්ත්වය යාවත්කාලීන විය.` : `Updated status for ${worker.name}.`);
+          }
+        });
+      });
+
+      grid.querySelectorAll("[data-wa-phone]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const name = btn.getAttribute("data-wa-name");
+          const phone = btn.getAttribute("data-wa-phone");
+          if(!validPhone(phone)){showToast("Phone අංකය වලංගු නැත");return;}
+          window.open("https://wa.me/"+toIntl(phone)+"?text="+encodeURIComponent((currentLang==="si"?"ආයුබෝවන් ":"Hello ")+name+", JobMe"),"_blank","noopener");
+        });
+      });
+
+      grid.querySelectorAll("[data-call-phone]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const name = btn.getAttribute("data-call-name");
+          const phone = btn.getAttribute("data-call-phone");
+          if(!validPhone(phone)){showToast("Phone අංකය වලංගු නැත");return;}
+          window.location.href="tel:"+phone;
+        });
+      });
+    }
+
+    function renderJobs() {
+      const t = i18n[currentLang];
+      const countEl = document.getElementById("jobCount");
+      if (countEl) countEl.textContent = urgentJobs.length;
+
+      const grid = document.getElementById("jobsGrid");
+      grid.innerHTML = "";
+
+      urgentJobs.forEach(job => {
+        const card = document.createElement("div");
+        card.className = "bg-white rounded-2xl p-4 shadow-sm border border-amber-200 flex flex-col justify-between gap-3";
+        card.innerHTML = `
+          <div class="space-y-2">
+            <div class="flex items-start justify-between gap-2">
+              <span class="text-[11px] font-bold bg-red-100 text-red-700 px-2.5 py-0.5 rounded-full">
+                🔥 ${currentLang === 'si' ? 'අදම අවශ්‍යයි (Urgent)' : 'Urgent Shift'}
+              </span>
+              <span class="text-xs font-bold bg-amber-50 border border-amber-200 text-amber-900 px-2.5 py-0.5 rounded-lg">
+                🏢 Employer Rating: ⭐ ${(job.own ? businessOwner.rating : job.ownerRating).toFixed(1)}
+              </span>
+            </div>
+            <h4 class="font-bold text-slate-900 text-sm sm:text-base">${esc(job.title)}</h4>
+            <p class="text-xs text-slate-600 font-medium">${esc(job.business)} • 📍 ${esc(job.location)}</p>
+            <div class="flex items-center justify-between bg-amber-50/70 rounded-xl px-3 py-1.5 border border-amber-200/80 text-xs">
+              <span class="font-medium text-slate-700">📞 ${esc(job.phone)}</span>
+              <div class="flex items-center gap-2">
+                <button type="button" data-job-wa="${esc(job.phone)}" data-job-biz="${esc(job.business)}" class="text-emerald-700 hover:underline font-bold">💬 WhatsApp</button>
+                <span class="text-slate-300">|</span>
+                <button type="button" data-job-call="${esc(job.phone)}" class="text-blue-700 hover:underline font-bold">📞 Call</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-2 border-t border-slate-100 flex items-center justify-between gap-2">
+            <div>
+              <span class="block text-[11px] text-slate-500">${t.dailyRateLabel}</span>
+              <span class="text-sm font-bold text-emerald-700">රු. ${job.dailyPay.toLocaleString()}</span>
+            </div>
+            <button type="button" data-apply-job="${job.id}" class="px-3.5 py-2 rounded-xl text-xs font-bold transition ${job.applied ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-500 hover:bg-amber-600 text-slate-950 shadow-xs'}">
+              ${job.applied ? t.jobAcceptedBtn : t.acceptJobBtn}
+            </button>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+
+      grid.querySelectorAll("[data-job-wa]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const phone = btn.getAttribute("data-job-wa");
+          const biz = btn.getAttribute("data-job-biz");
+          if (!validPhone(phone)) { showToast("Phone අංකය වලංගු නැත"); return; }
+          window.open("https://wa.me/" + toIntl(phone) + "?text=" + encodeURIComponent((currentLang === "si" ? "ආයුබෝවන් " : "Hello ") + biz + ", JobMe රැකියා දැන්වීම ගැන"), "_blank", "noopener");
+        });
+      });
+      grid.querySelectorAll("[data-job-call]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const phone = btn.getAttribute("data-job-call");
+          if (!validPhone(phone)) { showToast("Phone අංකය වලංගු නැත"); return; }
+          window.location.href = "tel:" + phone;
+        });
+      });
+      grid.querySelectorAll("[data-apply-job]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const id = Number(btn.getAttribute("data-apply-job"));
+          const job = urgentJobs.find(j => j.id === id);
+          if (job) {
+            job.applied = !job.applied;
+            saveState();
+            renderJobs();
+            showToast(
+              job.applied
+                ? (currentLang === "si" ? `"${esc(job.business)}" හි වැඩේ ඔබ භාරගත්තා!` : `You accepted the shift at "${esc(job.business)}"!`)
+                : (currentLang === "si" ? "ඉල්ලුම් කිරීම ඉවත් කරන ලදී." : "Application withdrawn.")
+            );
+          }
+        });
+      });
+    }
+
+    function populateCalcWorkers() {
+      const sel = document.getElementById("calcWorkerSelect");
+      const currentVal = sel.value;
+      sel.innerHTML = "";
+      workers.forEach(w => {
+        const opt = document.createElement("option");
+        opt.value = String(w.id);
+        opt.textContent = `${esc(w.name)} - රු. ${w.dailyWage}/day`;
+        sel.appendChild(opt);
+      });
+      if (currentVal && workers.some(w => String(w.id) === currentVal)) {
+        sel.value = currentVal;
+      }
+    }
+
+    function updateWageReceipt() {
+      const sel = document.getElementById("calcWorkerSelect");
+      const worker = workers.find(w => String(w.id) === sel.value) || workers[0];
+      if (!worker) return;
+
+      const days = Math.max(0, Number(document.getElementById("calcDaysInput").value) || 0);
+      const otHours = Math.max(0, Number(document.getElementById("calcOtHoursInput").value) || 0);
+      const otRate = Math.max(0, Number(document.getElementById("calcOtRateInput").value) || 0);
+      const advance = Math.max(0, Number(document.getElementById("calcAdvanceInput").value) || 0);
+
+      const basePay = Math.round(worker.dailyWage * days);
+      const otPay = Math.round(otHours * otRate);
+      const netPay = basePay + otPay - advance;
+
+      document.getElementById("receiptDateText").textContent = new Date().toLocaleDateString("si-LK");
+      document.getElementById("receiptWorkerName").textContent = worker.name;
+      document.getElementById("receiptBasePay").textContent = `රු. ${basePay.toLocaleString()} (${days}d)`;
+      document.getElementById("receiptOtPay").textContent = `+ රු. ${otPay.toLocaleString()} (${otHours}h)`;
+      document.getElementById("receiptAdvance").textContent = `- රු. ${advance.toLocaleString()}`;
+      document.getElementById("receiptNetTotal").textContent = netPay >= 0 ? `රු. ${netPay.toLocaleString()}` : `රු. 0 (ඉතිරි අත්තිකාරම්: රු. ${(-netPay).toLocaleString()})`;
+    }
+
+    function updateRevenueSimulator() {
+      const bCount = Number(document.getElementById("simBusinessesInput").value) || 40;
+      const dHires = Number(document.getElementById("simDailyHiresInput").value) || 25;
+
+      document.getElementById("simBusinessesVal").textContent = bCount;
+      document.getElementById("simDailyHiresVal").textContent = dHires;
+
+      const vipRevenue = bCount * 2500;
+      const commissionRevenue = dHires * 150 * 30;
+      const total = vipRevenue + commissionRevenue;
+
+      document.getElementById("simTotalRevenue").textContent = `රු. ${total.toLocaleString()} / ${currentLang === 'si' ? 'මසකට' : 'month'}`;
+      document.getElementById("simBreakdownText").textContent =
+        currentLang === "si"
+          ? `VIP ගාස්තු: රු. ${vipRevenue.toLocaleString()} + දෛනික කොමිස් (දින 30): රු. ${commissionRevenue.toLocaleString()}`
+          : `VIP Subscriptions: LKR ${vipRevenue.toLocaleString()} + Booking Fees (30d): LKR ${commissionRevenue.toLocaleString()}`;
+    }
+
+    function renderVerificationList() {
+      const container = document.getElementById("verificationList");
+      if (!container) return;
+      container.innerHTML = "";
+
+      workers.forEach(w => {
+        const row = document.createElement("div");
+        row.className = "bg-slate-50 rounded-xl p-3 border border-slate-200 flex flex-wrap items-center justify-between gap-3";
+        row.innerHTML = `
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="font-bold text-slate-900">${esc(w.name)}</span>
+              <span class="text-[11px] px-2 py-0.5 rounded-full font-semibold ${w.verified ? 'bg-blue-100 text-blue-800' : 'bg-amber-100 text-amber-800'}">
+                ${w.verified ? '✔ NIC Verified' : '⏳ Pending Check'}
+              </span>
+            </div>
+            <p class="text-slate-500 mt-0.5">🪪 NIC: <strong>${esc(w.nic) || (currentLang==='si'?'ලබා දී නැත':'not provided')}</strong> • 📍 ${esc(w.location)}</p>
+            ${w.nicFront ? `<div class="flex gap-2 mt-2">${[w.nicFront, w.nicBack].map(src => `<img src="${esc(src)}" alt="NIC" onclick="this.classList.toggle('h-20');this.classList.toggle('h-64')" class="h-20 rounded-lg border border-slate-300 cursor-pointer" />`).join("")}</div>` : ""}
+          </div>
+          <button type="button" data-verify-id="${w.id}" class="px-3 py-1.5 rounded-xl font-bold text-xs transition ${w.verified ? 'bg-slate-200 text-slate-700 hover:bg-slate-300' : 'bg-blue-600 text-white hover:bg-blue-700'}">
+            ${w.verified ? 'තහවුරු කර ඇත (Toggle)' : '✔ NIC තහවුරු කරන්න (Approve)'}
+          </button>
+        `;
+        container.appendChild(row);
+      });
+
+      if (businessOwner.nic) {
+        const orow = document.createElement("div");
+        orow.className = "bg-amber-50 rounded-xl p-3 border border-amber-200 flex flex-wrap items-center justify-between gap-3";
+        orow.innerHTML = `<div><span class="font-bold text-slate-900">🏢 ${esc(businessOwner.name)}</span> <span class="text-[11px] px-2 py-0.5 rounded-full font-semibold ${businessOwner.verified ? 'bg-blue-100 text-blue-800' : 'bg-amber-100 text-amber-800'}">${businessOwner.verified ? '✔ NIC Verified' : '⏳ Pending Check'}</span><p class="text-slate-500 mt-0.5">🪪 NIC: <strong>${esc(businessOwner.nic)}</strong> (ව්‍යාපාර හිමියා)</p></div><button type="button" class="px-3 py-1.5 rounded-xl font-bold text-xs bg-blue-600 text-white">${businessOwner.verified ? 'Toggle' : '✔ Approve'}</button>`;
+        orow.querySelector("button").addEventListener("click", () => { businessOwner.verified = !businessOwner.verified; saveState(); renderVerificationList(); renderOwnerHeader(); });
+        container.prepend(orow);
+      }
+      container.querySelectorAll("[data-verify-id]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const id = Number(btn.getAttribute("data-verify-id"));
+          const worker = workers.find(item => item.id === id);
+          if (worker) {
+            worker.verified = !worker.verified;
+            saveState();
+            renderVerificationList();
+            renderWorkers();
+            showToast(
+              worker.verified
+                ? `${worker.name} ගේ NIC තහවුරු කරන ලදී!`
+                : `${worker.name} ගේ NIC තත්ත්වය වෙනස් කරන ලදී.`
+            );
+          }
+        });
+      });
+    }
+
+    function renderHistory() {
+      const t = i18n[currentLang];
+      const list = document.getElementById("ratingHistoryList");
+      list.innerHTML = "";
+      ratingHistory.forEach(item => {
+        const row = document.createElement("div");
+        row.className = "bg-slate-50 rounded-xl p-3 border border-slate-200 grid grid-cols-1 sm:grid-cols-2 gap-2";
+        if (!item.workerToOwnerStars) {
+          row.className = "bg-slate-50 rounded-xl p-3 border border-slate-200 flex items-center justify-between flex-wrap gap-2";
+          row.innerHTML = `
+            <div>
+              <span class="font-bold text-slate-800">⭐ ${esc(item.workerName)} වෙත ලැබුණු ඇගයීම:</span>
+              <span class="text-amber-600 font-bold ml-1">${"⭐".repeat(item.ownerToWorkerStars)}</span>
+              <p class="text-slate-600 mt-0.5">"${esc(item.ownerComment||"හොඳ සේවාවක්")}"</p>
+            </div>
+          `;
+        } else {
+          row.innerHTML = `
+            <div>
+              <span class="font-bold text-slate-800">${t.ownerToWorker} ${esc(item.workerName)}:</span>
+              <span class="text-amber-600 font-bold ml-1">${"⭐".repeat(item.ownerToWorkerStars)}</span>
+              <p class="text-slate-600 mt-0.5">"${esc(item.ownerComment||"—")}"</p>
+            </div>
+            <div class="sm:border-l sm:border-slate-200 sm:pl-3">
+              <span class="font-bold text-emerald-900">👷 ${esc(item.workerName)} ${t.workerToOwner}</span>
+              <span class="text-amber-600 font-bold ml-1">${"⭐".repeat(item.workerToOwnerStars)}</span>
+              <p class="text-emerald-800 mt-0.5">"${esc(item.workerComment||"—")}"</p>
+            </div>
+          `;
+        }
+        list.appendChild(row);
+      });
+    }
+
+    function renderStarButtons(containerId, currentStars, onSelect) {
+      const container = document.getElementById(containerId);
+      container.innerHTML = "";
+      for (let i = 1; i <= 5; i++) {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "star-btn focus:outline-none " + (i <= currentStars ? "opacity-100" : "opacity-30");
+        btn.textContent = "⭐";
+        btn.setAttribute("aria-label", i + " star");
+        btn.setAttribute("aria-pressed", String(i <= currentStars));
+        btn.addEventListener("click", () => onSelect(i));
+        container.appendChild(btn);
+      }
+    }
+
+    function openRatingModal(workerId) {
+      const worker = workers.find(w => w.id === workerId);
+      if (!worker) return;
+      activeWorkerId = workerId;
+      selectedWorkerStars = 5;
+      selectedOwnerStars = 5;
+
+      document.getElementById("modalWorkerName").textContent = worker.name + " (" + worker.category + ")";
+      document.getElementById("modalWorkerMeta").textContent = "📍 " + worker.location + " • රු. " + worker.dailyWage.toLocaleString();
+      document.getElementById("ownerCommentInput").value = "";
+      document.getElementById("workerCommentInput").value = "";
+
+      const updateWorkerStars = (val) => {
+        selectedWorkerStars = val;
+        renderStarButtons("workerStarContainer", selectedWorkerStars, updateWorkerStars);
+      };
+      const updateOwnerStars = (val) => {
+        selectedOwnerStars = val;
+        renderStarButtons("ownerStarContainer", selectedOwnerStars, updateOwnerStars);
+      };
+
+      updateWorkerStars(5);
+      updateOwnerStars(5);
+
+      const modal = document.getElementById("ratingModal");
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+    }
+
+    function closeRatingModal() {
+      const modal = document.getElementById("ratingModal");
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+    }
+
+    // Event Listeners
+    function applyRole() {
+      const w = currentRole === "worker";
+      ["openAddWorkerBtn","openPostJobBtn","openPostJobBtn2"].forEach(id => { const el = document.getElementById(id); if (el) el.style.display = (w || id === "openAddWorkerBtn") ? "none" : ""; });
+      document.getElementById("ownerBadgeLabel").parentElement.style.display = w ? "none" : "";
+      applyLanguage();
+    }
+    document.getElementById("roleSelect").addEventListener("change", (e) => {
+      currentRole = e.target.value;
+      activeTab = currentRole === "owner" ? "workers" : "jobs";
+      applyRole();
+      showToast(currentRole === "owner" ? "ව්‍යාපාර හිමියාගේ පෙනුම (Employer View) සක්‍රියයි" : "සේවකයාගේ පෙනුම (Worker View) සක්‍රියයි");
+    });
+
+    // Secret Admin Login Modal Handlers
+    const adminPinModal = document.getElementById("adminPinModal");
+    function openAdminModal() {
+      adminPinModal.classList.remove("hidden");
+      adminPinModal.classList.add("flex");
+    }
+    function closeAdminModal() {
+      adminPinModal.classList.add("hidden");
+      adminPinModal.classList.remove("flex");
+    }
+
+    document.getElementById("openAdminModalBtn").addEventListener("click", openAdminModal);
+    document.getElementById("closeAdminModalBtn").addEventListener("click", closeAdminModal);
+    document.getElementById("cancelAdminPinBtn").addEventListener("click", closeAdminModal);
+
+    document.getElementById("exitAdminBtn").addEventListener("click", () => {
+      isAdminUnlocked = false;
+      activeTab = "workers";
+      updateTabStyles();
+      showToast("🔒 Admin ගිණුමෙන් ඉවත් විය. දැන් සාමාන්‍ය පරිශීලක පෙනුම සක්‍රියයි.");
+    });
+
+    document.getElementById("langToggleBtn").addEventListener("click", () => {
+      currentLang = currentLang === "si" ? "en" : "si";
+      saveState();
+      applyLanguage();
+      showToast(currentLang === "si" ? "භාෂාව සිංහලට මාරු කරන ලදී" : "Switched language to English");
+    });
+
+    document.getElementById("tabWorkersBtn").addEventListener("click", () => {
+      activeTab = "workers";
+      updateTabStyles();
+    });
+
+    document.getElementById("tabJobsBtn").addEventListener("click", () => {
+      activeTab = "jobs";
+      updateTabStyles();
+    });
+
+    document.getElementById("tabCalcBtn").addEventListener("click", () => {
+      activeTab = "calc";
+      populateCalcWorkers();
+      updateWageReceipt();
+      updateTabStyles();
+    });
+
+    document.getElementById("tabRevenueBtn").addEventListener("click", () => {
+      if (!isAdminUnlocked) return;
+      activeTab = "revenue";
+      updateRevenueSimulator();
+      updateTabStyles();
+    });
+
+    document.getElementById("tabVerifyBtn").addEventListener("click", () => {
+      if (!isAdminUnlocked) return;
+      activeTab = "verify";
+      renderVerificationList();
+      updateTabStyles();
+    });
+
+    document.getElementById("calcWorkerSelect").addEventListener("change", updateWageReceipt);
+    document.getElementById("calcDaysInput").addEventListener("input", updateWageReceipt);
+    document.getElementById("calcOtHoursInput").addEventListener("input", updateWageReceipt);
+    document.getElementById("calcOtRateInput").addEventListener("input", updateWageReceipt);
+    document.getElementById("calcAdvanceInput").addEventListener("input", updateWageReceipt);
+
+    document.getElementById("copyReceiptBtn").addEventListener("click", () => {
+      const name = document.getElementById("receiptWorkerName").textContent;
+      const net = document.getElementById("receiptNetTotal").textContent;
+      const g = id => document.getElementById(id).textContent;
+      const text = `🧾 JobMe Receipt (${g("receiptDateText")})
+Worker: ${name}
+Base: ${g("receiptBasePay")}
+OT: ${g("receiptOtPay")}
+Advance: ${g("receiptAdvance")}
+Net Payable: ${net}`;
+      try {
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        document.body.removeChild(ta);
+      } catch (e) {}
+      if (navigator.clipboard) navigator.clipboard.writeText(text).catch(() => {});
+      showToast(currentLang === "si" ? "WhatsApp රිසිට්පත Copy විය! (" + net + ")" : "Receipt copied for WhatsApp! (" + net + ")");
+    });
+
+    document.getElementById("rateFromReceiptBtn").addEventListener("click", () => {
+      const selId = Number(document.getElementById("calcWorkerSelect").value);
+      openRatingModal(selId || workers[0].id);
+    });
+
+    document.getElementById("simBusinessesInput").addEventListener("input", updateRevenueSimulator);
+    document.getElementById("simDailyHiresInput").addEventListener("input", updateRevenueSimulator);
+
+    document.getElementById("categoryFilter").addEventListener("change", renderWorkers);
+    document.getElementById("searchInput").addEventListener("input", renderWorkers);
+    document.getElementById("availableOnlyToggle").addEventListener("change", renderWorkers);
+
+    document.getElementById("closeRatingModalBtn").addEventListener("click", closeRatingModal);
+    document.getElementById("cancelRatingBtn").addEventListener("click", closeRatingModal);
+
+    document.getElementById("submitRatingBtn").addEventListener("click", () => {
+      const worker = workers.find(w => w.id === activeWorkerId);
+      if (!worker) return;
+      if (worker.lastRatedAt && Date.now() - worker.lastRatedAt < 864e5) { showToast(currentLang === "si" ? "මෙම සේවකයාට පැය 24ක් ඇතුළත නැවත Rating දිය නොහැක." : "You can rate this worker only once per 24 hours."); return; }
+
+      const ownerComment = document.getElementById("ownerCommentInput").value.trim();
+      const workerComment = document.getElementById("workerCommentInput").value.trim();
+
+      const totalWorkerScore = worker.rating * worker.reviews + selectedWorkerStars;
+      worker.reviews += 1;
+      worker.lastRatedAt = Date.now();
+      worker.rating = totalWorkerScore / worker.reviews;
+      if (ownerComment) worker.lastReview = ownerComment;
+
+      const totalOwnerScore = businessOwner.rating * businessOwner.reviewsCount + selectedOwnerStars;
+      businessOwner.reviewsCount += 1;
+      businessOwner.rating = totalOwnerScore / businessOwner.reviewsCount;
+
+      ratingHistory.unshift({
+        workerName: worker.name,
+        ownerToWorkerStars: selectedWorkerStars,
+        ownerComment: ownerComment,
+        workerToOwnerStars: selectedOwnerStars,
+        workerComment: workerComment
+      });
+
+      saveState();
+      closeRatingModal();
+      renderOwnerHeader();
+      renderWorkers();
+      renderHistory();
+      showToast(currentLang === "si" ? "දෙපැත්තේම Ratings සාර්ථකව යාවත්කාලීන විය!" : "Both ratings saved and updated!");
+    });
+
+    // Add Worker Modal
+    const addModal = document.getElementById("addWorkerModal");
+    function openAddModal() {
+      addModal.classList.remove("hidden");
+      addModal.classList.add("flex");
+    }
+    function closeAddModal() {
+      if (!session) { const ws = document.getElementById("welcomeScreen"); if (ws) ws.style.display = "flex"; }
+      addModal.classList.add("hidden");
+      addModal.classList.remove("flex");
+    }
+
+    document.getElementById("openAddWorkerBtn").addEventListener("click", openAddModal);
+    document.getElementById("closeAddModalBtn").addEventListener("click", closeAddModal);
+    document.getElementById("cancelAddWorkerBtn").addEventListener("click", closeAddModal);
+
+    function readImg(file) {
+      return new Promise((res, rej) => {
+        const fr = new FileReader();
+        fr.onload = () => {
+          const im = new Image();
+          im.onload = () => {
+            const k = Math.min(1, 900 / Math.max(im.width, im.height));
+            const c = document.createElement("canvas");
+            c.width = Math.round(im.width * k); c.height = Math.round(im.height * k);
+            c.getContext("2d").drawImage(im, 0, 0, c.width, c.height);
+            res(c.toDataURL("image/jpeg", 0.6));
+          };
+          im.onerror = rej; im.src = fr.result;
+        };
+        fr.onerror = rej; fr.readAsDataURL(file);
+      });
+    }
+    document.getElementById("addWorkerForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const name = document.getElementById("newWorkerName").value.trim();
+      const category = document.getElementById("newWorkerCategory").value;
+      const location = document.getElementById("newWorkerLocation").value.trim();
+      const wage = Math.min(100000, Math.max(500, Number(document.getElementById("newWorkerWage").value) || 3000));
+      const phone = document.getElementById("newWorkerPhone").value.replace(/[\s-]/g, "");
+
+      if (!name || !location) return;
+      if (!validPhone(phone)) { showToast(currentLang === "si" ? "වලංගු phone අංකයක් (0712345678) ඇතුළත් කරන්න." : "Enter a valid phone number (e.g. 0712345678)."); return; }
+      const nic = document.getElementById("newWorkerNic").value.replace(/\s/g, "").toUpperCase();
+      if (!/^(\d{9}[VX]|\d{12})$/.test(nic)) { showToast("වලංගු NIC අංකයක් ඇතුළත් කරන්න (උදා: 199012345678 හෝ 901234567V)."); return; }
+      if (workers.some(w => w.nic === nic && w.phone !== phone)) { showToast("මෙම NIC අංකය වෙනත් phone අංකයක් සමඟ ලියාපදිංචි වී ඇත."); return; }
+      const ex = workers.find(w => w.phone === phone);
+      if (ex) { if (ex.nic !== nic) { showToast("මෙම phone අංකය වෙනත් NIC එකක් සමඟ ලියාපදිංචි වී ඇත."); return; } closeAddModal(); startSession("worker", ex.name, phone, ex.id); showToast("ආපසු සාදරයෙන් පිළිගන්නවා, " + ex.name + "!"); return; }
+
+      const fF = document.getElementById("newWorkerNicFront").files[0], fB = document.getElementById("newWorkerNicBack").files[0];
+      if (!fF || !fB) { showToast("NIC ඉදිරිපස සහ පිටුපස පින්තූර දෙකම උඩුගත කරන්න."); return; }
+      let nicFront, nicBack;
+      try { nicFront = await readImg(fF); nicBack = await readImg(fB); } catch (err) { showToast("පින්තූරය කියවිය නොහැක. නැවත උත්සාහ කරන්න."); return; }
+      workers.unshift({
+        nicFront, nicBack,
+        id: (window._newWid = Date.now()),
+        name: name,
+        category: category,
+        location: location,
+        dailyWage: wage,
+        phone: phone,
+        nic: nic,
+        rating: 0,
+        reviews: 0,
+        availableNow: true,
+        verified: false,
+        lastReview: currentLang === "si" ? "අලුතින් ලියාපදිංචි වූ සේවකයෙකි." : "Newly registered worker."
+      });
+
+      saveState();
+      document.getElementById("addWorkerForm").reset();
+      closeAddModal();
+      if (!session) { startSession("worker", name, phone, window._newWid); showToast("🎉 ලියාපදිංචි වුණා! NIC පරීක්ෂා කළ පසු 🛡️ ලකුණ ලැබේ."); }
+      activeTab = currentRole === "worker" ? "jobs" : "workers";
+      populateCalcWorkers();
+      renderVerificationList();
+      updateTabStyles();
+      renderWorkers();
+      showToast(currentLang === "si" ? `${name} ලැයිස්තුවට එකතු කරන ලදී!` : `${name} added to worker list!`);
+    });
+
+    // Post Urgent Job Modal
+    const postJobModal = document.getElementById("postJobModal");
+    function openJobModal() {
+      if (session && session.role === "owner") { document.getElementById("jobBusinessInput").value = businessOwner.name; document.getElementById("jobPhoneInput").value = session.phone || ""; }
+      postJobModal.classList.remove("hidden");
+      postJobModal.classList.add("flex");
+    }
+    function closeJobModal() {
+      postJobModal.classList.add("hidden");
+      postJobModal.classList.remove("flex");
+    }
+
+    document.getElementById("openPostJobBtn").addEventListener("click", openJobModal);
+    document.getElementById("openPostJobBtn2").addEventListener("click", openJobModal);
+    document.getElementById("closeJobModalBtn").addEventListener("click", closeJobModal);
+    document.getElementById("cancelJobModalBtn").addEventListener("click", closeJobModal);
+
+    document.getElementById("postJobForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const title = document.getElementById("jobTitleInput").value.trim();
+      const business = document.getElementById("jobBusinessInput").value.trim();
+      const location = document.getElementById("jobLocationInput").value.trim();
+      const pay = Math.min(100000, Math.max(500, Number(document.getElementById("jobPayInput").value) || 3500));
+      const phone = document.getElementById("jobPhoneInput").value.replace(/[\s-]/g, "");
+
+      if (!title || !business || !location) return;
+      if (!validPhone(phone)) { showToast(currentLang === "si" ? "වලංගු phone අංකයක් ඇතුළත් කරන්න." : "Enter a valid phone number."); return; }
+
+      urgentJobs.unshift({
+        id: Date.now(),
+        title: title,
+        business: business,
+        ownerRating: businessOwner.rating,
+        own: true,
+        location: location,
+        dailyPay: pay,
+        phone: phone,
+        urgent: true,
+        applied: false
+      });
+
+      saveState();
+      document.getElementById("postJobForm").reset();
+      closeJobModal();
+      activeTab = "jobs";
+      updateTabStyles();
+      renderJobs();
+      showToast(currentLang === "si" ? "හදිසි රැකියා දැන්වීම පළ කරන ලදී!" : "Urgent job posted to the board!");
+    });
+
+    const dlBtn = document.getElementById("downloadHtmlBtn"); if (dlBtn) dlBtn.remove();
+
+
+    // Initialize
+    document.addEventListener("keydown", e => { if (e.key === "Escape") { closeRatingModal(); closeAddModal(); closeJobModal(); closeAdminModal(); } });
+    loadSavedState();
+    applyLanguage();
+  
+    // ===== Welcome / register (worker vs business owner) =====
+    let session = null;
+    function startSession(role, name, phone, wid) {
+      session = { role, name, phone, wid };
+      try { localStorage.setItem("wadamithuru_session", JSON.stringify(session)); } catch (e) {}
+      currentRole = role;
+      activeTab = role === "owner" ? "workers" : "jobs";
+      document.getElementById("welcomeScreen").style.display = "none";
+      applyRole();
+    }
+    const inp = "w-full border border-slate-300 rounded-2xl px-4 py-3 text-base focus:outline-none focus:border-emerald-500";
+    document.body.insertAdjacentHTML("beforeend", `
+      <div id="welcomeScreen" style="position:fixed;inset:0;z-index:40;overflow:auto;display:none" class="bg-gradient-to-b from-emerald-600 to-emerald-900 flex-col items-center justify-center p-5 gap-4 text-center">
+        <div class="bg-white rounded-3xl p-3 shadow-xl"><img src="data:image/jpeg;base64,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" alt="JobMe" class="w-44 h-auto rounded-2xl" /></div>
+        <p id="wlPrompt" class="text-emerald-100 text-lg font-semibold">ඔබ කවුද? පහතින් තෝරන්න</p>
+        <button type="button" id="regWorkerBtn" class="w-full max-w-sm bg-amber-400 hover:bg-amber-300 active:scale-95 transition rounded-3xl p-5 shadow-xl text-left flex items-center gap-4">
+          <span class="text-5xl">👷</span>
+          <span><span id="wlWorkerT" class="block text-xl font-extrabold text-slate-900">මම වැඩ සොයනවා</span><span id="wlWorkerS" class="block text-sm text-slate-800">සේවකයෙක් ලෙස ලියාපදිංචි වන්න</span></span>
+        </button>
+        <button type="button" id="regOwnerBtn" class="w-full max-w-sm bg-white hover:bg-emerald-50 active:scale-95 transition rounded-3xl p-5 shadow-xl text-left flex items-center gap-4">
+          <span class="text-5xl">🏢</span>
+          <span><span id="wlOwnerT" class="block text-xl font-extrabold text-emerald-900">මම සේවකයින් සොයනවා</span><span id="wlOwnerS" class="block text-sm text-slate-700">ව්‍යාපාර හිමියෙක් ලෙස ලියාපදිංචි වන්න</span></span>
+        </button>
+        <p id="wlHint" class="text-emerald-200 text-xs max-w-xs">දැනටමත් ලියාපදිංචි නම්, ඔබේ phone අංකය දමා නැවත ඇතුල් වන්න.</p>
+      </div>
+      <div id="ownerRegModal" class="hidden fixed inset-0 z-[60] bg-black/60 items-center justify-center p-3">
+        <form id="ownerRegForm" class="bg-white rounded-3xl p-5 w-full max-w-md space-y-3 shadow-2xl">
+          <h3 class="text-xl font-extrabold text-emerald-800">🏢 ව්‍යාපාර හිමියෙක් ලෙස ලියාපදිංචි වන්න</h3>
+          <input id="ownBizName" required placeholder="ව්‍යාපාරයේ නම (උදා: සිල්වා හාඩ්වෙයාර්)" class="${inp}">
+          <input id="ownBizPlace" required placeholder="නගරය (උදා: කුරුණෑගල)" class="${inp}">
+          <input id="ownBizPhone" required inputmode="tel" placeholder="Phone අංකය (0712345678)" class="${inp}">
+          <input id="ownBizNic" required placeholder="NIC අංකය (199012345678 හෝ 901234567V)" class="${inp}">
+          <p class="text-[11px] text-slate-500">🔒 NIC අංකය අන් අයට නොපෙනේ. තහවුරු කළ පසු 🛡️ ලකුණ ලැබේ.</p>
+          <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white rounded-2xl py-3.5 text-lg font-bold">✔ ලියාපදිංචි වන්න</button>
+          <button type="button" id="ownBizCancel" class="w-full text-slate-500 py-2 text-sm">← ආපසු</button>
+        </form>
+      </div>`);
+    const welcomeEl = document.getElementById("welcomeScreen");
+    const ownerModal = document.getElementById("ownerRegModal");
+    const showOwnerModal = on => { ownerModal.classList.toggle("hidden", !on); ownerModal.classList.toggle("flex", on); };
+    document.getElementById("regWorkerBtn").addEventListener("click", () => {
+      welcomeEl.style.display = "none";
+      const hh = document.querySelector("#addWorkerModal h2, #addWorkerModal h3");
+      if (hh) hh.textContent = "👷 සේවකයෙක් ලෙස ලියාපදිංචි වන්න";
+      openAddModal();
+    });
+    document.getElementById("regOwnerBtn").addEventListener("click", () => showOwnerModal(true));
+    document.getElementById("ownBizCancel").addEventListener("click", () => showOwnerModal(false));
+    document.getElementById("ownerRegForm").addEventListener("submit", e => {
+      e.preventDefault();
+      const biz = document.getElementById("ownBizName").value.trim();
+      const phone = document.getElementById("ownBizPhone").value.replace(/[\s-]/g, "");
+      if (!biz) return;
+      const nic = document.getElementById("ownBizNic").value.replace(/\s/g, "").toUpperCase();
+      if (!/^(\d{9}[VX]|\d{12})$/.test(nic)) { showToast("වලංගු NIC අංකයක් ඇතුළත් කරන්න."); return; }
+      if (!validPhone(phone)) { showToast("වලංගු phone අංකයක් (0712345678) ඇතුළත් කරන්න."); return; }
+      businessOwner.name = biz;
+      if (businessOwner.nic !== nic) { businessOwner.nic = nic; businessOwner.verified = false; }
+      saveState();
+      showOwnerModal(false);
+      e.target.reset();
+      startSession("owner", biz, phone);
+      showToast("🎉 ලියාපදිංචි වුණා! දැන් සේවකයින් සොයන්න හෝ හදිසි වැඩක් පළ කරන්න.");
+    });
+    const wlText = {
+      si: { wlPrompt: "ඔබ කවුද? පහතින් තෝරන්න", wlWorkerT: "මම වැඩ සොයනවා", wlWorkerS: "සේවකයෙක් ලෙස ලියාපදිංචි වන්න", wlOwnerT: "මම සේවකයින් සොයනවා", wlOwnerS: "ව්‍යාපාර හිමියෙක් ලෙස ලියාපදිංචි වන්න", wlHint: "දැනටමත් ලියාපදිංචි නම්, ඔබේ phone අංකය දමා නැවත ඇතුල් වන්න.", openLoginBtn: "🔑 දැනටමත් ලියාපදිංචිද? ඇතුල් වන්න", logoutBtn: "ඉවත් වන්න (Log out)", deleteAccBtn: "🗑️ මගේ ගිණුම සහ දත්ත මකන්න" },
+      en: { wlPrompt: "Who are you? Choose below", wlWorkerT: "I am looking for work", wlWorkerS: "Register as a Worker", wlOwnerT: "I am looking for workers", wlOwnerS: "Register as a Business Owner", wlHint: "Already registered? Log in with your phone number and PIN.", openLoginBtn: "🔑 Already registered? Log in", logoutBtn: "Log out", deleteAccBtn: "🗑️ Delete my account and data" }
+    };
+    window.applyWelcomeLang = function () {
+      const t = wlText[currentLang] || wlText.si;
+      Object.keys(t).forEach(id => { const el = document.getElementById(id); if (el) el.textContent = t[id]; });
+    };
+    document.body.insertAdjacentHTML("beforeend", `
+      <div id="langScreen" style="position:fixed;inset:0;z-index:50;display:none" class="bg-gradient-to-b from-emerald-600 to-emerald-900 flex-col items-center justify-center p-5 gap-5 text-center">
+        <div class="text-6xl">🌐</div>
+        <p class="text-white text-xl font-extrabold">භාෂාව තෝරන්න<br>Choose your language</p>
+        <button type="button" id="langPickSi" class="w-full max-w-sm bg-amber-400 hover:bg-amber-300 active:scale-95 transition rounded-3xl py-5 text-2xl font-extrabold text-slate-900 shadow-xl">සිංහල</button>
+        <button type="button" id="langPickEn" class="w-full max-w-sm bg-white hover:bg-emerald-50 active:scale-95 transition rounded-3xl py-5 text-2xl font-extrabold text-emerald-900 shadow-xl">English</button>
+      </div>`);
+    const pickLang = l => { currentLang = l; saveState(); document.getElementById("langScreen").style.display = "none"; applyLanguage(); };
+    document.getElementById("langPickSi").addEventListener("click", () => pickLang("si"));
+    document.getElementById("langPickEn").addEventListener("click", () => pickLang("en"));
+    if (!window.__hasLang) document.getElementById("langScreen").style.display = "flex";
+    // switch-role button in header
+    const swBtn = document.createElement("button");
+    swBtn.type = "button"; swBtn.textContent = "🔄"; swBtn.title = "ඉවත් වන්න / ගිණුම මාරු කරන්න";
+    swBtn.className = "bg-white/15 hover:bg-white/25 text-white rounded-xl px-3 py-2 text-sm";
+    document.getElementById("langToggleBtn").insertAdjacentElement("afterend", swBtn);
+    swBtn.addEventListener("click", () => { welcomeEl.style.display = "flex"; });
+    document.getElementById("roleSelect").style.display = "none";
+    if (session && session.role) { currentRole = session.role; activeTab = session.role === "owner" ? "workers" : "jobs"; applyRole(); }
+    else { welcomeEl.style.display = "flex"; }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script>
+// ===== Cloud mode (Supabase). Fill these two values to enable it =====
+const SUPABASE_URL = "https://huuytymcycukhxdegmvo.supabase.co";       // e.g. https://abcdxyz.supabase.co
+const SUPABASE_ANON_KEY = "sb_publishable_SIC8KNjXLDWOUHOJg3THjg_OskkXv-W";  // Project Settings > API > anon public key
+if (SUPABASE_URL && SUPABASE_ANON_KEY && window.supabase) (async () => {
+  const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  const $ = id => document.getElementById(id);
+  const toast = showToast;
+  const phoneOf = p => toIntl(p) + "@jobme.app";
+  const show = (id, on) => { $(id).classList.toggle("hidden", !on); $(id).classList.toggle("flex", on); };
+  let me = null, isAdmin = false, owners = [];
+  const intercept = (type, test, fn) => document.addEventListener(type, e => { const el = test(e); if (el) { e.preventDefault(); e.stopImmediatePropagation(); fn(e, el); } }, true);
+  const onClick = (sel, fn) => intercept("click", e => e.target.closest && e.target.closest(sel), (e, el) => fn(el));
+  const onSubmit = (id, fn) => intercept("submit", e => e.target.id === id && e.target, (e, f) => fn(f));
+
+  // extra fields: PIN for both forms, ID photos for owners
+  const ic = "w-full rounded-xl border border-slate-300 px-3 py-2 text-sm";
+  const pinHtml = id => `<div><label class="block font-semibold text-slate-700 mb-1">🔑 රහස් අංකය (PIN – ඉලක්කම් 6ක්)</label><input id="${id}" type="password" inputmode="numeric" maxlength="6" placeholder="••••••" class="${ic}" /></div>`;
+  $("newWorkerPhone").parentElement.insertAdjacentHTML("afterend", pinHtml("newWorkerPin"));
+  $("ownBizNic").insertAdjacentHTML("afterend", pinHtml("ownBizPin") + `<div class="grid grid-cols-2 gap-2"><label class="block text-xs font-semibold text-slate-700">📷 NIC ඉදිරිපස<input id="ownNicFront" type="file" accept="image/*" class="mt-1 block w-full text-[11px]" /></label><label class="block text-xs font-semibold text-slate-700">📷 NIC පිටුපස<input id="ownNicBack" type="file" accept="image/*" class="mt-1 block w-full text-[11px]" /></label></div>`);
+  document.body.insertAdjacentHTML("beforeend", `<div id="loginModal" class="hidden fixed inset-0 z-[60] bg-black/60 items-center justify-center p-3"><form id="loginForm" class="bg-white rounded-3xl p-5 w-full max-w-md space-y-3 shadow-2xl"><h3 class="text-xl font-extrabold text-emerald-800">🔑 ඇතුල් වන්න</h3><input id="loginPhone" required inputmode="tel" placeholder="Phone අංකය (0712345678)" class="${ic} !py-3 !text-base" /><input id="loginPin" required type="password" inputmode="numeric" maxlength="6" placeholder="PIN" class="${ic} !py-3 !text-base" /><button type="submit" class="w-full bg-emerald-600 text-white rounded-2xl py-3.5 text-lg font-bold">ඇතුල් වන්න</button><button type="button" id="loginCancel" class="w-full text-slate-500 py-2 text-sm">← ආපසු</button></form></div>`);
+  $("welcomeScreen").insertAdjacentHTML("beforeend", `<button type="button" id="openLoginBtn" class="text-white underline text-base font-semibold">🔑 දැනටමත් ලියාපදිංචිද? ඇතුල් වන්න</button><button type="button" id="logoutBtn" class="text-emerald-200 text-xs underline">ඉවත් වන්න (Log out)</button>`);
+  $("openLoginBtn").onclick = () => show("loginModal", true);
+  if (window.applyWelcomeLang) window.applyWelcomeLang();
+  $("loginCancel").onclick = () => show("loginModal", false);
+  $("logoutBtn").onclick = async () => { await sb.auth.signOut(); try { localStorage.removeItem("wadamithuru_session"); } catch (e) {} location.reload(); };
+
+  async function refresh() {
+    const { data: ps } = await sb.from("profiles").select("*").eq("role", "worker");
+    workers = (ps || []).map(p => ({ id: p.num, uid: p.id, name: p.name, category: p.category, location: p.location || "", dailyWage: p.daily_wage || 0, phone: p.phone || "", nic: "", rating: Number(p.rating) || 0, reviews: p.reviews || 0, availableNow: p.available, verified: p.verified, lastReview: p.last_review || "" }));
+    const { data: ap } = await sb.from("applications").select("job_id").eq("worker_id", me.id);
+    const applied = new Set((ap || []).map(a => a.job_id));
+    const { data: js } = await sb.from("jobs").select("*, owner:profiles!owner_id(rating)").order("created_at", { ascending: false });
+    urgentJobs = (js || []).map(j => ({ id: j.id, title: j.title, business: j.business, ownerRating: Number(j.owner && j.owner.rating) || 0, location: j.location || "", dailyPay: j.daily_pay || 0, phone: j.phone || "", urgent: true, applied: applied.has(j.id), own: j.owner_id === me.id, ownerUid: j.owner_id }));
+    const { data: rs } = await sb.from("ratings").select("stars,comment,ratee:profiles!ratee_id(name)").order("created_at", { ascending: false }).limit(10);
+    ratingHistory = (rs || []).map(r => ({ workerName: (r.ratee && r.ratee.name) || "", ownerToWorkerStars: r.stars, ownerComment: r.comment || "", workerToOwnerStars: 0, workerComment: "" }));
+    if (me.role === "owner") businessOwner = { name: me.name, rating: Number(me.rating) || 0, reviewsCount: me.reviews || 0, verified: me.verified, nic: "" };
+    const selfBar = $("workerSelfStatusBar");
+    if (selfBar) {
+      if (me.role === "worker") {
+        const myW = workers.find(x => x.uid === me.id);
+        const isAv = myW ? myW.availableNow : me.available;
+        selfBar.classList.remove("hidden");
+        $("workerSelfNameText").textContent = "👷 " + me.name + (me.verified ? " (🛡️ NIC Verified)" : " (⏳ NIC පරීක්ෂා කරමින්)");
+        const tBtn = $("workerSelfToggleBtn");
+        tBtn.textContent = isAv
+          ? (currentLang === "si" ? "🟢 දැන් ලබාගත හැක (Available) — වෙනස් කරන්න" : "🟢 Available Now — Tap to Change")
+          : (currentLang === "si" ? "⚪ කාර්යබහුලයි (Busy) — වෙනස් කරන්න" : "⚪ Currently Busy — Tap to Change");
+        tBtn.className = isAv
+          ? "bg-emerald-400 hover:bg-emerald-300 text-slate-950 font-extrabold text-xs sm:text-sm px-4 py-2.5 rounded-xl shadow-sm transition"
+          : "bg-slate-700 hover:bg-slate-600 text-white font-extrabold text-xs sm:text-sm px-4 py-2.5 rounded-xl shadow-sm transition";
+      } else {
+        selfBar.classList.add("hidden");
+      }
+    }
+    if (isAdmin) {
+      const { data: ids } = await sb.from("private_ids").select("*");
+      const { data: os } = await sb.from("profiles").select("*").eq("role", "owner");
+      owners = (os || []).map(o => ({ uid: o.id, name: o.name, location: o.location || "", phone: o.phone || "", verified: o.verified, nic: "" }));
+      for (const w of workers.concat(owners)) {
+        const r = (ids || []).find(x => x.id === w.uid); if (!r) continue;
+        w.nic = r.nic;
+        const { data: u } = await sb.storage.from("nic").createSignedUrls([r.front_path, r.back_path], 900);
+        if (u) { w.nicFront = u[0] && u[0].signedUrl; w.nicBack = u[1] && u[1].signedUrl; }
+      }
+    }
+    applyLanguage();
+  }
+  const partB = $("rateOwnerTitle") && $("rateOwnerTitle").parentElement;
+  if (partB) partB.classList.add("hidden");
+  onClick("#workerSelfToggleBtn", async () => {
+    if (!me || me.role !== "worker") return;
+    const myW = workers.find(x => x.uid === me.id);
+    const nextAv = !(myW ? myW.availableNow : me.available);
+    await sb.from("profiles").update({ available: nextAv }).eq("id", me.id);
+    me.available = nextAv;
+    await refresh();
+    toast(nextAv ? "🟢 ඔබ දැන් වැඩට ලබාගත හැක (Available) ලෙස දිස්වේ!" : "⚪ ඔබ දැන් කාර්යබහුලයි (Busy) ලෙස දිස්වේ.");
+  });
+  async function enter(p) {
+    me = p;
+    isAdmin = !!(await sb.rpc("is_admin")).data;
+    await refresh();
+    $("deleteAccBtn").style.display = ""; $("changePinBtn").style.display = "";
+    $("openAdminModalBtn").style.display = isAdmin ? "" : "none";
+    startSession(p.role, p.name, p.phone, p.num);
+  }
+  async function up(uid, name, file) {
+    const blob = await (await fetch(await readImg(file))).blob();
+    const path = uid + "/" + name + ".jpg";
+    const { error } = await sb.storage.from("nic").upload(path, blob, { contentType: "image/jpeg", upsert: true });
+    if (error) throw error;
+    return path;
+  }
+  async function register(role, f) {
+    const { data, error } = await sb.auth.signUp({ email: phoneOf(f.phone), password: f.pin });
+    if (error || !data.user) { toast(/registered|exists/i.test((error && error.message) || "") ? "මෙම අංකය දැනටමත් ලියාපදිංචියි. 'ඇතුල් වන්න' භාවිතා කරන්න." : "ලියාපදිංචි වීම අසාර්ථකයි: " + ((error && error.message) || "")); return false; }
+    if (!data.session) { toast('Supabase හි Confirm email ක්‍රියාවිරහිත කරන්න.'); return false; }
+    const uid = data.user.id;
+    try {
+      const front = await up(uid, "front", f.front), back = await up(uid, "back", f.back);
+      let r = await sb.from("profiles").insert({ id: uid, role, name: f.name, phone: f.phone, location: f.location, category: f.category || null, daily_wage: f.wage || null, consent_at: new Date().toISOString() });
+      if (r.error) throw r.error;
+      r = await sb.from("private_ids").insert({ id: uid, nic: f.nic, front_path: front, back_path: back });
+      if (r.error) throw r.error;
+    } catch (err) { toast("දත්ත සුරැකීම අසාර්ථකයි: " + (err.message || err)); try { await sb.storage.from("nic").remove([uid + "/front.jpg", uid + "/back.jpg"]); await sb.rpc("delete_my_account"); await sb.auth.signOut(); } catch (e2) {} return false; }
+    const { data: p } = await sb.from("profiles").select("*").eq("id", uid).single();
+    await enter(p);
+    return true;
+  }
+  const NIC = /^(\d{9}[VX]|\d{12})$/;
+  const common = (phone, nic, pin, fr, bk) => !validPhone(phone) ? "වලංගු phone අංකයක් (0712345678) ඇතුළත් කරන්න." : !NIC.test(nic) ? "වලංගු NIC අංකයක් ඇතුළත් කරන්න." : !/^\d{6}$/.test(pin) ? "PIN එක ඉලක්කම් 6ක් විය යුතුයි." : (!fr || !bk) ? "NIC ඉදිරිපස සහ පිටුපස පින්තූර දෙකම උඩුගත කරන්න." : "";
+
+  onSubmit("addWorkerForm", async form => {
+    const v = id => $(id).value.trim();
+    const phone = v("newWorkerPhone").replace(/[\s-]/g, ""), nic = v("newWorkerNic").replace(/\s/g, "").toUpperCase(), pin = v("newWorkerPin");
+    const fr = $("newWorkerNicFront").files[0], bk = $("newWorkerNicBack").files[0];
+    if (!v("newWorkerName") || !v("newWorkerLocation")) return;
+    const bad = common(phone, nic, pin, fr, bk); if (bad) return toast(bad);
+    if (!$("newWorkerConsent").checked) return toast("පුද්ගලිකත්ව ප්‍රතිපත්තියට එකඟ විය යුතුයි.");
+    if (await register("worker", { name: v("newWorkerName"), location: v("newWorkerLocation"), category: $("newWorkerCategory").value, wage: Math.min(100000, Math.max(500, Number($("newWorkerWage").value) || 3000)), phone, nic, pin, front: fr, back: bk })) { closeAddModal(); form.reset(); toast("🎉 ලියාපදිංචි වුණා! NIC පරීක්ෂා කළ පසු 🛡️ ලකුණ ලැබේ."); }
+  });
+  onSubmit("ownerRegForm", async form => {
+    const v = id => $(id).value.trim();
+    const phone = v("ownBizPhone").replace(/[\s-]/g, ""), nic = v("ownBizNic").replace(/\s/g, "").toUpperCase(), pin = v("ownBizPin");
+    const fr = $("ownNicFront").files[0], bk = $("ownNicBack").files[0];
+    if (!v("ownBizName")) return;
+    const bad = common(phone, nic, pin, fr, bk); if (bad) return toast(bad);
+    if (!$("ownBizConsent").checked) return toast("පුද්ගලිකත්ව ප්‍රතිපත්තියට එකඟ විය යුතුයි.");
+    if (await register("owner", { name: v("ownBizName"), location: v("ownBizPlace"), phone, nic, pin, front: fr, back: bk })) { showOwnerModal(false); form.reset(); toast("🎉 ලියාපදිංචි වුණා! NIC පරීක්ෂා කළ පසු 🛡️ ලකුණ ලැබේ."); }
+  });
+  onSubmit("loginForm", async () => {
+    const phone = $("loginPhone").value.replace(/[\s-]/g, "");
+    if (!validPhone(phone)) return toast("වලංගු phone අංකයක් ඇතුළත් කරන්න.");
+    const { data, error } = await sb.auth.signInWithPassword({ email: phoneOf(phone), password: $("loginPin").value });
+    if (error) return toast("Phone අංකය හෝ PIN වැරදියි.");
+    const { data: p } = await sb.from("profiles").select("*").eq("id", data.user.id).single();
+    if (!p) return toast("ගිණුම සම්පූර්ණ නැත. නැවත ලියාපදිංචි වන්න.");
+    show("loginModal", false);
+    await enter(p);
+  });
+  onSubmit("postJobForm", async form => {
+    const v = id => $(id).value.trim(); const phone = v("jobPhoneInput").replace(/[\s-]/g, "");
+    if (!v("jobTitleInput") || !v("jobBusinessInput") || !v("jobLocationInput")) return;
+    if (!validPhone(phone)) return toast("වලංගු phone අංකයක් ඇතුළත් කරන්න.");
+    const { error } = await sb.from("jobs").insert({ owner_id: me.id, title: v("jobTitleInput"), business: v("jobBusinessInput"), location: v("jobLocationInput"), daily_pay: Math.min(100000, Math.max(500, Number($("jobPayInput").value) || 3500)), phone });
+    if (error) return toast("පළ කිරීම අසාර්ථකයි: " + error.message);
+    form.reset(); closeJobModal(); activeTab = "jobs"; await refresh(); toast("හදිසි රැකියා දැන්වීම පළ කරන ලදී!");
+  });
+  onClick("[data-apply-job]", async el => {
+    if (me.role !== "worker") return toast("සේවකයින්ට පමණක් වැඩ භාරගත හැක.");
+    const id = Number(el.dataset.applyJob), j = urgentJobs.find(x => x.id === id); if (!j) return;
+    const r = j.applied ? await sb.from("applications").delete().match({ job_id: id, worker_id: me.id }) : await sb.from("applications").insert({ job_id: id, worker_id: me.id });
+    if (r.error) return toast("අසාර්ථකයි: " + r.error.message);
+    await refresh(); toast(j.applied ? "ඉල්ලුම් කිරීම ඉවත් කරන ලදී." : "✅ වැඩේ භාරගත්තා!");
+  });
+  onClick("[data-toggle-id]", async el => {
+    const w = workers.find(x => x.id === Number(el.dataset.toggleId)); if (!w) return;
+    if (w.uid !== me.id) return toast("සේවකයාට පමණක් තමන්ගේ තත්ත්වය වෙනස් කළ හැක.");
+    await sb.from("profiles").update({ available: !w.availableNow }).eq("id", me.id); await refresh();
+  });
+  onClick("[data-verify-id]", async el => {
+    if (!isAdmin) return;
+    const w = workers.find(x => x.id === Number(el.dataset.verifyId)); if (!w) return;
+    await sb.from("profiles").update({ verified: !w.verified }).eq("id", w.uid); await refresh();
+  });
+  onClick("#submitRatingBtn", async () => {
+    if (me.role !== "owner") return toast("ව්‍යාපාර හිමියන්ට පමණක් සේවකයින්ට Rating දිය හැක.");
+    const w = workers.find(x => x.id === activeWorkerId); if (!w) return;
+    const { error } = await sb.from("ratings").insert({ rater_id: me.id, ratee_id: w.uid, stars: selectedWorkerStars, comment: $("ownerCommentInput").value.trim() });
+    if (error) return toast(/24h/.test(error.message) ? "මෙම සේවකයාට පැය 24ක් ඇතුළත නැවත Rating දිය නොහැක." : "අසාර්ථකයි: " + error.message);
+    closeRatingModal(); await refresh(); toast("Rating සුරැකුණා!");
+  });
+  onClick("#unlockAdminBtn", () => {
+    if (!isAdmin) return toast("🔒 ඔබට Admin අවසරයක් නැත.");
+    isAdminUnlocked = true; activeTab = "revenue"; closeAdminModal(); updateTabStyles(); toast("🔓 Admin Panel විවෘත විය!");
+  });
+
+  // ----- privacy consent, privacy policy, delete-my-account -----
+  const consentHtml = id => `<label class="flex items-start gap-2 text-xs text-slate-700"><input id="${id}" type="checkbox" class="mt-0.5 w-4 h-4" /><span>සත්‍යාපනය සඳහා මගේ NIC අංකය සහ පින්තූර ගබඩා කිරීමට මම එකඟයි. <button type="button" class="privacyLink underline text-emerald-700 font-semibold">පුද්ගලිකත්ව ප්‍රතිපත්තිය</button></span></label>`;
+  $("newWorkerPin").parentElement.insertAdjacentHTML("afterend", consentHtml("newWorkerConsent"));
+  $("ownBizPin").parentElement.insertAdjacentHTML("afterend", consentHtml("ownBizConsent"));
+  document.body.insertAdjacentHTML("beforeend", `<div id="privacyModal" class="hidden fixed inset-0 z-[70] bg-black/60 items-center justify-center p-3"><div class="bg-white rounded-3xl p-5 w-full max-w-md max-h-[85vh] overflow-auto space-y-2 shadow-2xl text-sm text-slate-700"><h3 class="text-xl font-extrabold text-emerald-800">🔒 පුද්ගලිකත්ව ප්‍රතිපත්තිය</h3><p><b>අප රැස් කරන දත්ත:</b> නම, phone අංකය, නගරය, NIC අංකය සහ NIC පින්තූර.</p><p><b>හේතුව:</b> ඔබේ අනන්‍යතාවය තහවුරු කර සේවකයින්ට සහ ව්‍යාපාර හිමියන්ට එකිනෙකා කෙරෙහි විශ්වාසය ගොඩනැගීම.</p><p><b>කවුරුන්ට පේනවාද:</b> NIC අංකය සහ පින්තූර පේන්නේ ඔබටත් තහවුරු කිරීම කරන admin ටත් පමණයි. අනෙක් අයට පේන්නේ නම, නගරය, phone අංකය, rating සහ 🛡️ ලකුණ පමණයි.</p><p><b>ගබඩා කිරීම:</b> ඔබ ගිණුම මකන තෙක්. මුල් තිරයේ "මගේ ගිණුම සහ දත්ත මකන්න" බොත්තමෙන් ඕනෑම වෙලාවක සියලු දත්ත මැකිය හැක.</p><p><b>සම්බන්ධ වන්න:</b> support@jobme.lk</p><button type="button" id="privacyClose" class="w-full bg-emerald-600 text-white rounded-2xl py-3 font-bold">වැටහුණා</button></div></div>`);
+  onClick(".privacyLink", () => show("privacyModal", true));
+  onClick("#privacyClose", () => show("privacyModal", false));
+  $("welcomeScreen").insertAdjacentHTML("beforeend", `<button type="button" id="deleteAccBtn" style="display:none" class="text-red-200 text-xs underline">🗑️ මගේ ගිණුම සහ දත්ත මකන්න</button>`);
+  if (window.applyWelcomeLang) window.applyWelcomeLang();
+  document.body.insertAdjacentHTML("beforeend", `<div id="deleteConfirmModal" class="hidden fixed inset-0 z-[80] bg-black/60 items-center justify-center p-3"><div class="bg-white rounded-3xl p-5 w-full max-w-sm space-y-3 shadow-2xl text-center"><h3 class="text-lg font-extrabold text-rose-700">🗑️ ගිණුම මකා දමන්නද?</h3><p class="text-xs text-slate-600">ඔබේ ගිණුම, NIC දත්ත සහ පින්තූර සම්පූර්ණයෙන්ම මැකී යනු ඇත.</p><div class="flex gap-2 justify-center pt-2"><button type="button" id="cancelDelAccBtn" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700">අවලංගු කරන්න</button><button type="button" id="confirmDelAccBtn" class="px-4 py-2 rounded-xl text-xs font-bold bg-rose-600 text-white">ඔව්, මකා දමන්න</button></div></div></div>`);
+  $("deleteAccBtn").onclick = () => { if (me) show("deleteConfirmModal", true); };
+  $("cancelDelAccBtn").onclick = () => show("deleteConfirmModal", false);
+  $("confirmDelAccBtn").onclick = async () => {
+    show("deleteConfirmModal", false);
+    if (!me) return;
+    try { await sb.storage.from("nic").remove([me.id + "/front.jpg", me.id + "/back.jpg"]); } catch (e) {}
+    const { error } = await sb.rpc("delete_my_account");
+    if (error) return toast("මකා දැමීම අසාර්ථකයි: " + error.message);
+    await sb.auth.signOut(); try { localStorage.removeItem("wadamithuru_session"); } catch (e) {} location.reload();
+  };
+
+  // ----- change own PIN, admin reset of a forgotten PIN -----
+  const T = (si, en) => currentLang === "en" ? en : si;
+  const pinOk = v => /^\d{6}$/.test(v);
+  document.body.insertAdjacentHTML("beforeend", `<div id="pinModal" class="hidden fixed inset-0 z-[70] bg-black/60 items-center justify-center p-3"><form id="pinForm" class="bg-white rounded-3xl p-5 w-full max-w-md space-y-3 shadow-2xl"><h3 id="pinTitle" class="text-xl font-extrabold text-slate-900"></h3><input id="pinNew" type="password" inputmode="numeric" maxlength="6" required class="w-full rounded-xl border border-slate-300 px-3 py-2 text-center tracking-widest" /><input id="pinNew2" type="password" inputmode="numeric" maxlength="6" required class="w-full rounded-xl border border-slate-300 px-3 py-2 text-center tracking-widest" /><div class="flex gap-2 justify-end"><button type="button" id="pinCancel" class="px-4 py-2 rounded-xl text-sm font-bold text-slate-600">✖</button><button type="submit" id="pinSave" class="px-4 py-2 rounded-xl text-sm font-bold bg-emerald-600 text-white">OK</button></div></form></div>`);
+  $("welcomeScreen").insertAdjacentHTML("beforeend", `<button type="button" id="changePinBtn" style="display:none" class="text-emerald-100 text-xs underline"></button>`);
+  const labelPin = () => { $("changePinBtn").textContent = T("🔑 මගේ PIN එක වෙනස් කරන්න", "🔑 Change my PIN"); $("pinTitle").textContent = T("🔑 අලුත් PIN එක (ඉලක්කම් 6ක්)", "🔑 New PIN (6 digits)"); $("pinNew").placeholder = T("අලුත් PIN", "New PIN"); $("pinNew2").placeholder = T("නැවත PIN එක", "Repeat PIN"); };
+  labelPin();
+  const baseApply = window.applyWelcomeLang; window.applyWelcomeLang = function () { baseApply && baseApply(); labelPin(); };
+  $("changePinBtn").onclick = () => { $("pinNew").value = ""; $("pinNew2").value = ""; show("pinModal", true); };
+  $("pinCancel").onclick = () => show("pinModal", false);
+  $("pinForm").onsubmit = async e => {
+    e.preventDefault();
+    const a = $("pinNew").value, b = $("pinNew2").value;
+    if (!pinOk(a)) return toast(T("PIN එක ඉලක්කම් 6ක් විය යුතුයි.", "PIN must be exactly 6 digits."));
+    if (a !== b) return toast(T("PIN දෙක සමාන නැහැ.", "The two PINs do not match."));
+    const { error } = await sb.auth.updateUser({ password: a });
+    if (error) return toast(T("PIN වෙනස් කිරීම අසාර්ථකයි: ", "Could not change PIN: ") + error.message);
+    show("pinModal", false); toast(T("✅ PIN එක වෙනස් කළා.", "✅ PIN changed."));
+  };
+  const adminBox = document.createElement("div");
+  adminBox.id = "adminResetBox";
+  adminBox.className = "bg-amber-50 border border-amber-200 rounded-xl p-3 mb-3 space-y-2";
+  adminBox.innerHTML = `<div id="arTitle" class="font-bold text-slate-900 text-sm"></div><div class="flex flex-wrap gap-2"><input id="arPhone" type="tel" class="flex-1 min-w-[8rem] rounded-xl border border-slate-300 px-3 py-2 text-sm" /><input id="arPin" type="text" inputmode="numeric" maxlength="6" class="w-28 rounded-xl border border-slate-300 px-3 py-2 text-sm text-center tracking-widest" /><button type="button" id="arBtn" class="px-4 py-2 rounded-xl text-sm font-bold bg-slate-900 text-amber-300"></button></div>`;
+  const baseVerify2 = renderVerificationList;
+  renderVerificationList = function () {
+    baseVerify2();
+    const c = $("verificationList"); if (!c || !isAdmin) return;
+    $("arTitle") || c.parentElement.insertBefore(adminBox, c);
+    $("arTitle").textContent = T("🔑 අමතක වූ PIN එක reset කරන්න", "🔑 Reset a forgotten PIN");
+    $("arPhone").placeholder = T("පරිශීලකයාගේ phone (0712345678)", "User's phone (0712345678)");
+    $("arPin").placeholder = T("අලුත් PIN", "New PIN"); $("arBtn").textContent = T("Reset කරන්න", "Reset");
+  };
+  onClick("#arBtn", async () => {
+    if (!isAdmin) return;
+    const ph = $("arPhone").value.trim(), pin = $("arPin").value.trim();
+    if (!validPhone(ph)) return toast(T("වලංගු phone අංකයක් ඇතුළත් කරන්න.", "Enter a valid phone number."));
+    if (!pinOk(pin)) return toast(T("PIN එක ඉලක්කම් 6ක් විය යුතුයි.", "PIN must be exactly 6 digits."));
+    const { error } = await sb.rpc("admin_reset_pin", { p_phone: phoneOf(ph), p_pin: pin });
+    if (error) return toast(/not found/.test(error.message) ? T("එම phone අංකයෙන් ගිණුමක් නැහැ.", "No account with that phone number.") : T("අසාර්ථකයි: ", "Failed: ") + error.message);
+    $("arPhone").value = ""; $("arPin").value = ""; toast(T("✅ PIN එක reset වුණා. පරිශීලකයාට අලුත් PIN එක කියන්න.", "✅ PIN reset. Tell the user their new PIN."));
+  });
+
+  // ----- admin: approve business owners too -----
+  const baseVerifyRender = renderVerificationList;
+  renderVerificationList = function () {
+    baseVerifyRender();
+    const c = $("verificationList"); if (!c) return;
+    owners.slice().reverse().forEach(o => {
+      const row = document.createElement("div");
+      row.className = "bg-amber-50 rounded-xl p-3 border border-amber-200 flex flex-wrap items-center justify-between gap-3";
+      row.innerHTML = `<div><span class="font-bold text-slate-900">🏢 ${esc(o.name)}</span> <span class="text-[11px] px-2 py-0.5 rounded-full font-semibold ${o.verified ? "bg-blue-100 text-blue-800" : "bg-amber-100 text-amber-800"}">${o.verified ? "✔ NIC Verified" : "⏳ Pending Check"}</span><p class="text-slate-500 mt-0.5">🪪 NIC: <strong>${esc(o.nic)}</strong> • 📍 ${esc(o.location)} (ව්‍යාපාර හිමියා)</p>${o.nicFront ? `<div class="flex gap-2 mt-2">${[o.nicFront, o.nicBack].map(src => `<img src="${esc(src)}" alt="NIC" onclick="this.classList.toggle('h-20');this.classList.toggle('h-64')" class="h-20 rounded-lg border border-slate-300 cursor-pointer" />`).join("")}</div>` : ""}</div><button type="button" data-verify-owner="${esc(o.uid)}" class="px-3 py-1.5 rounded-xl font-bold text-xs bg-blue-600 text-white">${o.verified ? "Toggle" : "✔ Approve"}</button>`;
+      c.prepend(row);
+    });
+  };
+  onClick("[data-verify-owner]", async el => {
+    if (!isAdmin) return;
+    const o = owners.find(x => x.uid === el.dataset.verifyOwner); if (!o) return;
+    await sb.from("profiles").update({ verified: !o.verified }).eq("id", o.uid); await refresh();
+  });
+
+  // ----- worker rates the business owner -----
+  let ownerStars = 5, rateJob = null;
+  document.body.insertAdjacentHTML("beforeend", `<div id="rateOwnerModal" class="hidden fixed inset-0 z-[60] bg-black/60 items-center justify-center p-3"><div class="bg-white rounded-3xl p-5 w-full max-w-md space-y-3 shadow-2xl"><h3 class="text-xl font-extrabold text-emerald-800">⭐ ව්‍යාපාර හිමියාට Rating දෙන්න</h3><p id="rateOwnerName" class="text-sm text-slate-600"></p><div id="rateOwnerStars" class="flex gap-2 justify-center text-4xl"></div><textarea id="rateOwnerComment" rows="2" placeholder="අදහසක් (අවශ්‍ය නම්)" class="${ic} !py-3 !text-base"></textarea><button type="button" id="rateOwnerSubmit" class="w-full bg-emerald-600 text-white rounded-2xl py-3.5 text-lg font-bold">✔ සුරකින්න</button><button type="button" id="rateOwnerCancel" class="w-full text-slate-500 py-2 text-sm">← ආපසු</button></div></div>`);
+  const drawStars = () => { $("rateOwnerStars").innerHTML = [1, 2, 3, 4, 5].map(i => `<button type="button" data-os="${i}" aria-label="${i} star" class="${i <= ownerStars ? "" : "opacity-30"}">⭐</button>`).join(""); };
+  onClick("[data-os]", el => { ownerStars = Number(el.dataset.os); drawStars(); });
+  onClick("#rateOwnerCancel", () => show("rateOwnerModal", false));
+  onClick("[data-rate-owner]", el => {
+    rateJob = urgentJobs.find(x => x.id === Number(el.dataset.rateOwner)); if (!rateJob) return;
+    ownerStars = 5; drawStars(); $("rateOwnerComment").value = ""; $("rateOwnerName").textContent = rateJob.business; show("rateOwnerModal", true);
+  });
+  onClick("#rateOwnerSubmit", async () => {
+    if (!rateJob || !rateJob.ownerUid) return;
+    const { error } = await sb.from("ratings").insert({ rater_id: me.id, ratee_id: rateJob.ownerUid, stars: ownerStars, comment: $("rateOwnerComment").value.trim() });
+    if (error) return toast(/24h/.test(error.message) ? "මෙම ව්‍යාපාර හිමියාට පැය 24ක් ඇතුළත නැවත Rating දිය නොහැක." : "අසාර්ථකයි: " + error.message);
+    show("rateOwnerModal", false); await refresh(); toast("Rating සුරැකුණා!");
+  });
+  function decorate() {
+    if (!me || me.role !== "worker") return;
+    document.querySelectorAll("[data-apply-job]").forEach(b => {
+      const j = urgentJobs.find(x => x.id === Number(b.dataset.applyJob));
+      if (!j || !j.applied || j.own || b.parentElement.querySelector("[data-rate-owner]")) return;
+      b.insertAdjacentHTML("afterend", `<button type="button" data-rate-owner="${j.id}" class="bg-amber-100 hover:bg-amber-200 text-amber-900 text-xs font-bold px-3 py-2 rounded-xl">⭐ Rating</button>`);
+    });
+  }
+  new MutationObserver(decorate).observe(document.body, { childList: true, subtree: true });
+  setInterval(() => { if (me && !isAdmin && !document.hidden) refresh(); }, 45000);
+
+  // boot: restore login or show welcome
+  const { data: { session: s0 } } = await sb.auth.getSession();
+  if (s0) { const { data: p } = await sb.from("profiles").select("*").eq("id", s0.user.id).single(); if (p) return enter(p); }
+  session = null; try { localStorage.removeItem("wadamithuru_session"); } catch (e) {}
+  workers = []; urgentJobs = []; ratingHistory = []; applyLanguage();
+  $("welcomeScreen").style.display = "flex";
+})(); else {
+  document.body.insertAdjacentHTML("beforeend", '<div style="position:fixed;inset:0;z-index:100;background:#064e3b;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:24px;text-align:center"><div style="font-size:48px">📡</div><h2 style="font-size:22px;font-weight:800">සම්බන්ධ විය නොහැක</h2><p style="max-width:320px">Internet සම්බන්ධතාවය පරීක්ෂා කරලා නැවත උත්සාහ කරන්න.</p><button onclick="location.reload()" style="background:#fbbf24;color:#0f172a;font-weight:800;border-radius:16px;padding:12px 24px">🔄 නැවත උත්සාහ කරන්න</button></div>');
+}
+  </script>
+</body>
+</html>
