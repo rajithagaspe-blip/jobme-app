@@ -1,0 +1,25 @@
+name: JobMe Automated Audit
+
+on: [push, workflow_dispatch]
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run HTML, JS & Security Audit
+        run: |
+          node -e '
+            const fs = require("fs"), vm = require("vm");
+            const html = fs.readFileSync("index.html", "utf8");
+            const scripts = [...html.matchAll(/<script(?![^>]*src=)[^>]*>([\s\S]*?)<\/script>/gi)];
+            scripts.forEach((m, i) => new vm.Script(m[1], { filename: "script-" + (i+1) + ".js" }));
+            console.log("✅ PASS: All inline JavaScript syntax is valid (" + scripts.length + " blocks)");
+            if (/\b(alert|confirm|prompt)\s*\(/.test(html)) throw new Error("Blocked native dialog found");
+            console.log("✅ PASS: No blocked dialogs found");
+            if (!html.includes("data-unlock-id")) throw new Error("Phone masking missing");
+            console.log("✅ PASS: Phone Number Masking is active");
+            if (!html.includes("workerSelfStatusBar")) throw new Error("Worker status bar missing");
+            console.log("✅ PASS: Worker Self-Availability Bar is present");
+            console.log("🎉 ALL CHECKS PASSED!");
+          '
